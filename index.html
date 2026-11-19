@@ -1,455 +1,641 @@
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#101827">
-<title>Мои финансы • Telegram</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b1220">
+<title>Мои финансы 2.0</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
-:root{font-family:Inter,system-ui,-apple-system,'Segoe UI',sans-serif;color:#f5f7ff;background:#080d19;font-synthesis:none}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0 auto;max-width:520px;min-height:100vh;padding:26px 17px 115px;background:radial-gradient(ellipse at 90% -8%,#213d60 0,transparent 34%),#080d19}
-h1{font-size:27px;letter-spacing:-1px;line-height:1.1;margin:9px 0 10px;font-weight:850}
-h2{font-size:17px;letter-spacing:-.35px;margin:0 0 15px;font-weight:750}
-.muted{color:#91a0ba;font-size:12px;line-height:1.5}
-.card{background:linear-gradient(160deg,#151f31,#111928);border:1px solid #28354b;border-radius:23px;padding:19px;margin:15px 0;box-shadow:0 9px 30px #0002}
-.card.hero{background:linear-gradient(135deg,#19394a 0%,#14253c 45%,#172038 100%);border-color:#315c65;position:relative;overflow:hidden}
-.hero:before{content:'';position:absolute;width:190px;height:190px;right:-85px;top:-100px;border-radius:50%;background:#2bcf9c20;filter:blur(6px);pointer-events:none}
-.hero .stat:first-child{background:transparent;border:0;grid-column:1/-1;padding:3px 0 12px}
-.hero .stat:first-child b{font-size:37px;letter-spacing:-1.8px}
-.hero .stat:nth-child(2){background:#32d6a91c;border-color:#3cd5a950}
-.hero .stat:nth-child(2) b{color:#71efc3}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.stat{background:#0c1627;border:1px solid #25344c;border-radius:16px;padding:14px 12px;min-width:0}
-.stat b{display:block;font-size:19px;letter-spacing:-.65px;margin-top:7px;overflow-wrap:anywhere}
-.green{color:#62e9b7}
-.amber{color:#ffd18b}
-.red{color:#ff808f}
-label{display:block;color:#afbdd2;font-size:12px;margin-bottom:7px;font-weight:600}
-input,select,button{font:inherit;border-radius:13px;padding:13px 12px;border:1px solid #35445e;background:#0b1424;color:#fff;min-width:0;width:100%;outline:none}
-input:focus,select:focus{border-color:#49d9b0;box-shadow:0 0 0 3px #49d9b01a}
-button{background:linear-gradient(100deg,#34d6a3,#1ea9a7);border:0;color:#071b20;font-weight:800;cursor:pointer;min-height:47px}
-button:active{transform:scale(.99)}
-button.secondary{background:#253750;color:#e9f1ff}
-button.danger{background:#542b3b;color:#ffb8c4;min-height:0}
-.field{margin:10px 0}
-.row{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:10px 0}
+body{margin:0;background:#0b1220;color:#f1f5ff;font-family:Arial,sans-serif;padding:16px 16px 90px}
+main{max-width:600px;margin:auto}
+h1{font-size:27px;margin:12px 0}
+h2{font-size:18px;margin:0 0 15px}
+h3{font-size:15px}
+p{line-height:1.5}
+small,.muted{color:#9aaac0;font-size:12px}
+.card{background:#172236;border:1px solid #304059;border-radius:19px;padding:17px;margin:15px 0}
+.hero{background:linear-gradient(135deg,#164d48,#19263c)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tile{background:#0c1729;padding:13px;border-radius:13px}
+.tile b{display:block;font-size:19px;margin-top:8px;overflow-wrap:anywhere}
+.green{color:#61e8b2}
+.red{color:#ff8b9a}
+input,select,button{width:100%;padding:13px;border-radius:11px;border:1px solid #36475d;background:#0b1525;color:white;font-size:15px;margin:5px 0}
+button{background:#38d5a5;color:#08251d;border:0;font-weight:bold}
+button.secondary{background:#293b55;color:white}
+button.danger{background:#59303f;color:#ffc0c8;width:auto}
+label{display:block;color:#aabbd1;font-size:12px;margin-top:10px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px}
 .row>*{min-width:0}
-.small{font-size:12px}
-.entry{padding:13px 0;border-bottom:1px solid #273449}
-.entry:last-child{border:0}
-.actions{display:flex;gap:8px;align-items:center;flex-shrink:0}
-.actions button{width:31px;height:31px;padding:3px;border-radius:9px}
-.pill{background:#ffffff12;border:1px solid #ffffff18;color:#d9e8ef;border-radius:100px;padding:6px 9px;font-size:10px;white-space:nowrap}
-.notice{line-height:1.65}
-details summary{cursor:pointer;font-weight:750;list-style:none}
-details summary:after{content:'⌄';float:right;color:#62e9b7}
-details[open] summary{margin-bottom:15px}
-hr{border:0;border-top:1px solid #28354b;margin:17px 0}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.footer{font-size:11px;color:#74849e;line-height:1.65;padding:0 4px}
-.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(520px,100%);display:grid;grid-template-columns:repeat(4,1fr);gap:3px;padding:10px 12px calc(12px + env(safe-area-inset-bottom));background:#101a2bf5;border-top:1px solid #304058;backdrop-filter:blur(18px);z-index:10}
-.nav a{display:flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none;color:#94a6be;font-size:10px;font-weight:700;padding:5px 2px}
-.nav a span{font-size:21px}
-.nav a:first-child{color:#66e9bb}
-.progress{height:8px;border-radius:30px;background:#ffffff19;overflow:hidden;margin:13px 0 8px}
-.progress>div{height:100%;width:0;background:linear-gradient(90deg,#34d6a3,#75ebc5);border-radius:30px;transition:width .2s}
-.card:target{border-color:#46cba8}
-#today{text-transform:capitalize}
-#transactionForm button{margin-top:8px}
-#allocation .row{border-bottom:1px solid #253248;padding:6px 0}
-#allocation .row:last-child{border:0}
-@media(max-width:370px){body{padding-left:12px;padding-right:12px}.card{padding:15px}.hero .stat:first-child b{font-size:31px}.pill{font-size:9px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.item{border-bottom:1px solid #304059;padding:13px 0}
+.bar{height:8px;background:#314155;border-radius:20px;overflow:hidden;margin:10px 0}
+.bar i{display:block;height:100%;background:#49dcb0}
+nav{position:fixed;bottom:0;left:0;right:0;background:#111c2e;border-top:1px solid #304059;display:flex;justify-content:space-around;padding:15px 5px}
+nav a{color:#9dcabf;text-decoration:none;font-size:12px}
+section{scroll-margin-top:15px}
 </style>
 </head>
 <body>
-<div class="muted">Личный бюджет • только твои деньги • без интернета</div>
-<h1>💰 Финансовый календарь</h1>
-<div class="muted" id="today"></div>
-
-<section class="card" id="salary">
-<h2>💳 Зарплата за текущий период</h2>
-<p class="muted notice">10-го и 25-го введи сумму, которая <b>реально пришла</b>, даже если был больничный или отгулы. Затем укажи, сколько из неё выделяешь на жизнь до следующей зарплаты.</p>
-<form id="quickSalaryForm">
-<div class="two">
-<div class="field">
-<label for="quickPay">Получено, ₽</label>
-<input id="quickPay" type="number" min="0" step="1" inputmode="decimal" required placeholder="Например, 23000">
-</div>
-<div class="field">
-<label for="quickLife">На жизнь до зарплаты, ₽</label>
-<input id="quickLife" type="number" min="0" step="1" inputmode="decimal" required placeholder="Например, 20000">
-</div>
-</div>
-<button type="submit">Сохранить зарплату и пересчитать</button>
-</form>
-<p class="muted small" id="salaryStatus"></p>
-</section>
+<main>
+<h1>💰 Мои финансы 2.0</h1>
+<p class="muted" id="today"></p>
 
 <section class="card hero" id="home">
-<div class="row">
-<h2>До следующей зарплаты</h2>
-<span class="pill" id="period"></span>
-</div>
+<h2>💳 Мой бюджет</h2>
 <div class="grid">
-<div class="stat"><span class="muted">Осталось на жизнь</span><b id="remaining">—</b></div>
-<div class="stat"><span class="muted">Лимит в день</span><b class="green" id="daily">—</b></div>
-<div class="stat"><span class="muted">Дней включая сегодня</span><b id="days">—</b></div>
-<div class="stat"><span class="muted">Потрачено за период</span><b id="spent">—</b></div>
+<div class="tile"><small>Осталось</small><b id="balance">0 ₽</b></div>
+<div class="tile"><small>Лимит в день</small><b class="green" id="daily">0 ₽</b></div>
+<div class="tile"><small>Потрачено сегодня</small><b id="spentToday">0 ₽</b></div>
+<div class="tile"><small>До зарплаты</small><b id="days">0 дней</b></div>
 </div>
-<div class="progress" aria-label="Доля оставшегося бюджета"><div id="budgetProgress"></div></div>
-<p class="muted notice" id="advice"></p>
-<div class="row"><span class="muted">Следующая зарплата</span><b id="nextPay"></b></div>
-</section>
-
-<section class="card" id="add">
-<h2>✦ Новая операция</h2>
-<form id="transactionForm">
-<div class="two">
-<div class="field"><label for="date">Дата</label><input type="date" id="date" required></div>
-<div class="field"><label for="kind">Тип</label><select id="kind"><option value="expense">Расход</option><option value="income">Доп. доход</option></select></div>
-</div>
-<div class="two">
-<div class="field"><label for="amount">Сумма, ₽</label><input id="amount" type="number" min="0.01" step="0.01" inputmode="decimal" placeholder="1500" required></div>
-<div class="field"><label for="category">Категория</label><select id="category"><option>Продукты</option><option>Прочее</option><option>Oracle</option><option>Непредвиденное</option><option>Другое</option></select></div>
-</div>
-<div class="field"><label for="note">Комментарий (необязательно)</label><input id="note" maxlength="100" placeholder="Магазин, покупка..."></div>
-<button>Сохранить и пересчитать</button>
-</form>
-</section>
-
-<section class="card" id="plan">
-<h2>◫ Распределение зарплаты</h2>
-<div class="muted">Суммы зарплаты не фиксированы. Вводи фактическое поступление в верхней карточке; лимиты пересчитаются автоматически.</div>
-<div id="allocation"></div>
-<p class="muted notice">Бюджет на жизнь: продукты 20 000 ₽ + прочие 5 000 ₽ за каждый полумесячный период. Резерв, накопления и Oracle считаются отдельно и не увеличивают дневной лимит.</p>
-</section>
-
-<section class="card" id="history">
-<h2>↗ История операций</h2>
-<div id="transactions"></div>
+<div class="bar"><i id="budgetBar"></i></div>
+<p class="muted" id="forecast"></p>
 </section>
 
 <section class="card">
-<details>
-<summary>⚙️ Зарплаты, остатки и настройки</summary>
-<p class="muted notice">При первом открытии укажи, сколько денег реально выделено на жизнь в текущем периоде. Для будущих периодов план применяется автоматически. В день зарплаты введи фактически полученную сумму и при необходимости поправь сумму на жизнь.</p>
-<div class="two">
-<div class="field"><label>План 10-го, ₽</label><input id="pay10" type="number" min="0" step="1"></div>
-<div class="field"><label>План 25-го, ₽</label><input id="pay25" type="number" min="0" step="1"></div>
+<h2>💵 Получил зарплату</h2>
+<form id="salaryForm">
+<label>Фактически получил, ₽</label>
+<input id="salary" type="number" min="0" required>
+<label>Выделяю на жизнь, ₽</label>
+<input id="living" type="number" min="0" required>
+<button>Сохранить зарплату</button>
+</form>
+<p class="muted">Зарплата может меняться. Вводи реальную сумму каждого поступления.</p>
+</section>
+
+<section class="card" id="add">
+<h2>➕ Записать операцию</h2>
+<form id="expenseForm">
+<label>Тип операции</label>
+<select id="kind">
+<option value="expense">Расход</option>
+<option value="income">Дополнительный доход</option>
+</select>
+<label>Сумма</label>
+<input id="amount" type="number" min="0.01" step="0.01" required>
+<label>Категория</label>
+<select id="category"></select>
+<label>Дата</label>
+<input id="date" type="date" required>
+<label>Комментарий</label>
+<input id="note" placeholder="Например, продукты">
+<button>Сохранить</button>
+</form>
+</section>
+
+<section class="card">
+<h2>🛒 Проверка покупки</h2>
+<label>Стоимость покупки</label>
+<input id="purchase" type="number" min="0" placeholder="Например, 5000">
+<p id="purchaseResult" class="muted">Введи стоимость покупки.</p>
+</section>
+
+<section class="card" id="analytics">
+<h2>📊 Аналитика расходов</h2>
+<div class="grid">
+<div class="tile"><small>За период</small><b id="periodSpent">0 ₽</b></div>
+<div class="tile"><small>За месяц</small><b id="monthSpent">0 ₽</b></div>
 </div>
-<div class="two">
-<div class="field"><label>На жизнь 10-го, ₽</label><input id="life10" type="number" min="0" step="1"></div>
-<div class="field"><label>На жизнь 25-го, ₽</label><input id="life25" type="number" min="0" step="1"></div>
-</div>
-<button id="saveSettings" type="button">Сохранить план</button>
-<hr>
-<div class="muted">Текущий период: <b id="currentPeriodLabel"></b></div>
-<div class="two">
-<div class="field"><label>Фактическая зарплата, ₽</label><input id="actualPay" type="number" min="0" step="1"></div>
-<div class="field"><label>Выделено на жизнь, ₽</label><input id="actualLife" type="number" min="0" step="1"></div>
-</div>
-<button id="savePeriod" type="button">Сохранить суммы периода</button>
-<hr>
-<h2>Резерв и накопления</h2>
-<div class="two">
-<div class="field"><label>Резерв, ₽</label><input id="reserve" type="number" min="0" step="1"></div>
-<div class="field"><label>Накопления, ₽</label><input id="savings" type="number" min="0" step="1"></div>
-</div>
-<button id="saveFunds" type="button">Сохранить остатки</button>
-<p class="muted">Эти два счёта ведутся отдельно от денег на жизнь. Изменяй их вручную при переводах.</p>
-</details>
+<h3>Расходы по категориям</h3>
+<div id="charts"></div>
+</section>
+
+<section class="card" id="goals">
+<h2>🎯 Финансовые цели</h2>
+<form id="goalForm">
+<input id="goalName" placeholder="Название цели" required>
+<input id="goalTarget" type="number" min="1" placeholder="Сколько нужно, ₽" required>
+<button>Добавить цель</button>
+</form>
+<div id="goalList"></div>
 </section>
 
 <section class="card">
 <h2>🛡️ Резерв и накопления</h2>
-<div class="grid">
-<div class="stat"><span class="muted">Переходящий резерв</span><b id="reserveView">—</b></div>
-<div class="stat"><span class="muted">Накопления</span><b id="savingsView">—</b></div>
-</div>
-<p class="muted">Новые микрозаймы: 0 ₽. Oracle оплачивается только из заранее выделенных денег.</p>
+<label>Резерв, ₽</label>
+<input id="reserve" type="number" min="0">
+<label>Накопления, ₽</label>
+<input id="savings" type="number" min="0">
+<button id="saveFunds">Сохранить</button>
+<p class="muted">Эти суммы ведутся отдельно от бюджета на жизнь.</p>
 </section>
 
 <section class="card">
-<h2>💾 Резервная копия</h2>
-<p class="muted notice">Данные сохраняются только в браузере этого телефона. Очистка данных браузера может удалить записи. Делай резервную копию хотя бы раз в неделю.</p>
-<div class="two">
-<button type="button" id="export">Скачать копию</button>
-<button type="button" class="secondary" id="importButton">Восстановить</button>
-</div>
-<input type="file" accept="application/json,.json" id="import" hidden>
+<h2>📉 Мои долги</h2>
+<form id="debtForm">
+<input id="debtName" placeholder="Кому должен" required>
+<input id="debtAmount" type="number" min="1" placeholder="Остаток долга" required>
+<button>Добавить долг</button>
+</form>
+<div id="debtList"></div>
 </section>
 
-<nav class="nav" aria-label="Разделы">
-<a href="#home"><span>⌂</span>Главная</a>
-<a href="#add"><span>⊕</span>Записать</a>
-<a href="#plan"><span>▤</span>План</a>
-<a href="#history"><span>◷</span>История</a>
-</nav>
+<section class="card">
+<h2>📅 Обязательные платежи</h2>
+<form id="billForm">
+<input id="billName" placeholder="Название платежа" required>
+<input id="billAmount" type="number" min="1" placeholder="Сумма" required>
+<input id="billDay" type="number" min="1" max="31" placeholder="День месяца" required>
+<button>Добавить платёж</button>
+</form>
+<div id="billList"></div>
+<p class="muted">Это напоминания, а не автоматические списания.</p>
+</section>
 
-<p class="footer">Календарь работает локально, без банковских подключений. Дневной лимит = остаток выделенных на жизнь денег / количество календарных дней до следующей зарплаты, включая сегодня. Расходы, внесённые задним числом, учитываются в своём периоде. Если зарплата задерживается, расчёт дат пока остаётся привязан к 10-му и 25-му.</p>
+<section class="card" id="history">
+<h2>🧾 История операций</h2>
+<div id="historyList"></div>
+</section>
+
+<section class="card">
+<h2>⚙️ Настройки</h2>
+<label>План зарплаты 10-го</label>
+<input id="pay10" type="number" min="0">
+<label>План зарплаты 25-го</label>
+<input id="pay25" type="number" min="0">
+<label>На жизнь после 10-го</label>
+<input id="life10" type="number" min="0">
+<label>На жизнь после 25-го</label>
+<input id="life25" type="number" min="0">
+<button id="saveSettings">Сохранить план</button>
+<h3>Свои категории</h3>
+<input id="newCategory" placeholder="Новая категория">
+<button id="addCategory" class="secondary">Добавить категорию</button>
+<h3>Резервные копии</h3>
+<button id="export">💾 Скачать копию</button>
+<button id="importButton" class="secondary">📥 Восстановить</button>
+<input id="importFile" type="file" accept=".json" hidden>
+<p class="muted">Данные хранятся локально. Регулярно скачивай резервную копию.</p>
+</section>
+</main>
+
+<nav>
+<a href="#home">🏠 Главная</a>
+<a href="#add">➕ Расход</a>
+<a href="#analytics">📊 Аналитика</a>
+<a href="#goals">🎯 Цели</a>
+<a href="#history">🧾 История</a>
+</nav>
 
 <script>
 (()=>{
-'use strict';
+"use strict";
+
 try{
-  window.Telegram?.WebApp?.ready();
-  window.Telegram?.WebApp?.expand();
+window.Telegram?.WebApp?.ready();
+window.Telegram?.WebApp?.expand();
 }catch(e){}
 
-const KEY='personal-finance-calendar-v1';
-const pad=n=>String(n).padStart(2,'0');
-const iso=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
-const parse=s=>{
-  let [y,m,d]=s.split('-').map(Number);
-  return new Date(y,m-1,d);
-};
-const fmt=n=>new Intl.NumberFormat('ru-RU',{maximumFractionDigits:2}).format(n)+' ₽';
-const el=id=>document.getElementById(id);
-
+const KEY="personal-finance-calendar-v1";
+const $=id=>document.getElementById(id);
+const money=n=>new Intl.NumberFormat("ru-RU",{
+maximumFractionDigits:2
+}).format(n)+" ₽";
+const iso=d=>[
+d.getFullYear(),
+String(d.getMonth()+1).padStart(2,"0"),
+String(d.getDate()).padStart(2,"0")
+].join("-");
+const val=id=>Number($(id).value);
+const uid=()=>Date.now()+Math.random();
 const defaults={
-  pay10:0,pay25:0,life10:0,life25:0,
-  reserve:0,savings:0,periods:{},transactions:[]
+pay10:0,pay25:0,life10:0,life25:0,
+reserve:0,savings:0,
+periods:{},transactions:[],
+goals:[],debts:[],bills:[],
+categories:[
+"Продукты","Прочее","Oracle",
+"Непредвиденное","Транспорт",
+"Здоровье","Дом","Собака",
+"Подписки","Другое"
+]
 };
 
-let state;
+let data;
 try{
-  state={...defaults,...JSON.parse(localStorage.getItem(KEY)||'{}')};
-}catch{
-  state={...defaults};
+data={...defaults,...JSON.parse(localStorage.getItem(KEY)||"{}")};
+}catch(e){
+data={...defaults};
 }
-state.periods=state.periods||{};
-state.transactions=Array.isArray(state.transactions)?state.transactions:[];
+for(const k of ["transactions","goals","debts","bills"]){
+if(!Array.isArray(data[k]))data[k]=[];
+}
+if(!Array.isArray(data.categories))data.categories=[...defaults.categories];
+data.categories=[...new Set([...defaults.categories,...data.categories])];
+if(!data.periods||typeof data.periods!=="object")data.periods={};
 
-const save=()=>localStorage.setItem(KEY,JSON.stringify(state));
-
-function getPeriod(d){
-  const y=d.getFullYear(),m=d.getMonth(),day=d.getDate();
-  let start,next,type;
-  if(day>=25){
-    start=new Date(y,m,25);
-    next=new Date(y,m+1,10);
-    type=25;
-  }else if(day>=10){
-    start=new Date(y,m,10);
-    next=new Date(y,m,25);
-    type=10;
-  }else{
-    start=new Date(y,m-1,25);
-    next=new Date(y,m,10);
-    type=25;
-  }
-  return {start,next,type,key:iso(start)};
+function save(){
+localStorage.setItem(KEY,JSON.stringify(data));
 }
 
-function periodData(p){
-  return state.periods[p.key]||{
-    pay:state['pay'+p.type],
-    life:state['life'+p.type]
-  };
+function period(d){
+let y=d.getFullYear(),m=d.getMonth(),day=d.getDate();
+let start,next,type;
+if(day>=25){
+start=new Date(y,m,25);
+next=new Date(y,m+1,10);
+type=25;
+}else if(day>=10){
+start=new Date(y,m,10);
+next=new Date(y,m,25);
+type=10;
+}else{
+start=new Date(y,m-1,25);
+next=new Date(y,m,10);
+type=25;
+}
+return {start,next,type,key:iso(start)};
+}
+
+function periodBudget(p){
+return data.periods[p.key]||{
+pay:Number(data["pay"+p.type])||0,
+life:Number(data["life"+p.type])||0
+};
+}
+
+function sum(arr){
+return arr.reduce((n,x)=>n+(Number(x.amount)||0),0);
+}
+
+function periodTotals(p){
+let tx=data.transactions.filter(x=>x.date>=p.key&&x.date<iso(p.next));
+return {
+spent:sum(tx.filter(x=>x.kind==="expense")),
+income:sum(tx.filter(x=>x.kind==="income"))
+};
+}
+
+function daysLeft(now,next){
+return Math.max(1,Math.round((
+Date.UTC(next.getFullYear(),next.getMonth(),next.getDate())-
+Date.UTC(now.getFullYear(),now.getMonth(),now.getDate())
+)/86400000));
+}
+
+function text(tag,value){
+let e=document.createElement(tag);
+e.textContent=value;
+return e;
+}
+
+function button(label,action){
+let b=document.createElement("button");
+b.textContent=label;
+b.className="secondary";
+b.type="button";
+b.onclick=action;
+return b;
 }
 
 function render(){
-  const now=new Date(),today=iso(now),p=getPeriod(now),data=periodData(p);
-  const items=state.transactions.filter(t=>t.date>=p.key&&t.date<iso(p.next));
-  const spent=items.filter(t=>t.kind==='expense').reduce((s,t)=>s+t.amount,0);
-  const earned=items.filter(t=>t.kind==='income').reduce((s,t)=>s+t.amount,0);
-  const remaining=data.life+earned-spent;
+const now=new Date();
+const today=iso(now);
+const p=period(now);
+const budget=periodBudget(p);
+const totals=periodTotals(p);
+const remaining=(Number(budget.life)||0)+totals.income-totals.spent;
+const days=daysLeft(now,p.next);
+const daily=Math.max(0,remaining/days);
 
-  const days=Math.max(1,Math.round((
-    new Date(p.next.getFullYear(),p.next.getMonth(),p.next.getDate())-
-    new Date(now.getFullYear(),now.getMonth(),now.getDate())
-  )/86400000));
-  const daily=Math.max(0,remaining/days);
+$("today").textContent=now.toLocaleDateString("ru-RU",{
+day:"numeric",month:"long",year:"numeric",weekday:"long"
+});
+$("balance").textContent=money(remaining);
+$("daily").textContent=money(daily);
+$("days").textContent=days+" дн.";
+$("spentToday").textContent=money(sum(data.transactions.filter(x=>
+x.kind==="expense"&&x.date===today
+)));
+$("periodSpent").textContent=money(totals.spent);
+$("monthSpent").textContent=money(sum(data.transactions.filter(x=>
+x.kind==="expense"&&x.date.startsWith(today.slice(0,7))
+)));
+$("budgetBar").style.width=Math.max(0,Math.min(100,
+budget.life?remaining/budget.life*100:0
+))+"%";
 
-  el('today').textContent=now.toLocaleDateString('ru-RU',{
-    weekday:'long',day:'numeric',month:'long',year:'numeric'
-  });
-  el('date').value=el('date').value||today;
-  el('period').textContent=`${p.key} — ${iso(new Date(p.next.getFullYear(),p.next.getMonth(),p.next.getDate()-1))}`;
-  el('remaining').textContent=fmt(remaining);
-  el('remaining').className=remaining<0?'red':'';
-  el('daily').textContent=fmt(daily);
-  el('budgetProgress').style.width=Math.max(
-    0,Math.min(100,data.life>0?remaining/data.life*100:0)
-  )+'%';
-  el('days').textContent=days;
-  el('spent').textContent=fmt(spent);
-  el('nextPay').textContent=p.next.toLocaleDateString('ru-RU',{
-    day:'numeric',month:'long'
-  });
-  el('advice').textContent=remaining<0
-    ?'Лимит превышен. Останови необязательные траты и проверь бюджет.'
-    :`Можно тратить в среднем ${fmt(daily)} в день до следующей зарплаты. Каждый новый расход сразу уменьшит лимит.`;
+const elapsed=Math.max(1,Math.round((
+Date.UTC(now.getFullYear(),now.getMonth(),now.getDate())-
+Date.UTC(p.start.getFullYear(),p.start.getMonth(),p.start.getDate())
+)/86400000)+1);
+const forecast=remaining-(totals.spent/elapsed)*(days-1);
+$("forecast").textContent="Прогноз остатка к зарплате: "+money(forecast);
 
-  const alloc=[
-    ['Фактически получено / план',data.pay],
-    ['Выделено на жизнь',data.life],
-    ['Не распределено на жизнь',data.pay-data.life]
-  ];
-  el('allocation').innerHTML=alloc.map(([name,value])=>
-    `<div class="row"><span>${name}</span><b>${fmt(value)}</b></div>`
-  ).join('')+`<div class="muted small">Дневной лимит считается только из суммы «На жизнь», а не из всей зарплаты.</div>`;
+$("reserve").value=data.reserve||0;
+$("savings").value=data.savings||0;
 
-  el('transactions').innerHTML=items.length
-    ?'':'<p class="muted">Пока записей нет.</p>';
-
-  items.slice().sort((a,b)=>
-    b.date.localeCompare(a.date)||b.id-a.id
-  ).forEach(t=>{
-    const row=document.createElement('div');
-    row.className='entry row';
-    const info=document.createElement('div');
-    const line=document.createElement('div');
-    line.textContent=`${t.date.split('-').reverse().join('.')} · ${t.category}`;
-    const desc=document.createElement('div');
-    desc.className='muted small';
-    desc.textContent=t.note|| (t.kind==='expense'?'Расход':'Доп. доход');
-    info.append(line,desc);
-
-    const actions=document.createElement('div');
-    actions.className='actions';
-    const amount=document.createElement('b');
-    amount.className=t.kind==='expense'?'':'green';
-    amount.textContent=(t.kind==='expense'?'−':'+')+fmt(t.amount);
-
-    const del=document.createElement('button');
-    del.className='danger';
-    del.textContent='×';
-    del.setAttribute('aria-label','Удалить запись');
-    del.onclick=()=>{
-      if(confirm('Удалить эту запись?')){
-        state.transactions=state.transactions.filter(x=>x.id!==t.id);
-        save();
-        render();
-      }
-    };
-    actions.append(amount,del);
-    row.append(info,actions);
-    el('transactions').append(row);
-  });
-
-  for(const k of ['pay10','pay25','life10','life25','reserve','savings']){
-    if(document.activeElement!==el(k))el(k).value=state[k];
-  }
-  el('reserveView').textContent=fmt(state.reserve);
-  el('savingsView').textContent=fmt(state.savings);
-  el('currentPeriodLabel').textContent=p.key;
-  el('salaryStatus').textContent=state.periods[p.key]
-    ?'Фактическая зарплата за этот период сохранена. Можно изменить в любой момент.'
-    :'Пока использован план. Введи фактическую зарплату, чтобы расчёт был точным.';
-
-  if(document.activeElement!==el('quickPay'))
-    el('quickPay').value=state.periods[p.key]?.pay??'';
-  if(document.activeElement!==el('quickLife'))
-    el('quickLife').value=state.periods[p.key]?.life??'';
-  if(document.activeElement!==el('actualPay'))
-    el('actualPay').value=data.pay;
-  if(document.activeElement!==el('actualLife'))
-    el('actualLife').value=data.life;
+for(const k of ["pay10","pay25","life10","life25"]){
+$(k).value=data[k]||0;
 }
 
-el('quickSalaryForm').onsubmit=e=>{
-  e.preventDefault();
-  const pay=Number(el('quickPay').value);
-  const life=Number(el('quickLife').value);
-  if(!Number.isFinite(pay)||!Number.isFinite(life)||pay<0||life<0||life>pay)
-    return alert('Проверь суммы: бюджет на жизнь не должен превышать полученную зарплату.');
-  const p=getPeriod(new Date());
-  state.periods[p.key]={pay,life};
-  save();
-  render();
-  alert('Сохранено! Дневной лимит пересчитан.');
+$("salary").value=data.periods[p.key]?.pay??"";
+$("living").value=data.periods[p.key]?.life??"";
+
+renderCategories();
+renderHistory();
+renderGoals();
+renderDebts();
+renderBills();
+renderPurchase();
+renderCharts();
+}
+
+function renderCategories(){
+const select=$("category");
+const current=select.value;
+select.replaceChildren();
+data.categories.forEach(name=>{
+let o=document.createElement("option");
+o.value=name;
+o.textContent=name;
+select.append(o);
+});
+if(data.categories.includes(current))select.value=current;
+}
+
+function renderHistory(){
+const root=$("historyList");
+root.replaceChildren();
+const arr=[...data.transactions].sort((a,b)=>
+b.date.localeCompare(a.date)||b.id-a.id
+);
+if(!arr.length){
+root.append(text("p","Пока операций нет"));
+return;
+}
+arr.slice(0,100).forEach(t=>{
+const div=document.createElement("div");
+div.className="item";
+const row=document.createElement("div");
+row.className="row";
+const info=document.createElement("div");
+info.append(
+text("b",t.category||"Другое"),
+text("p",(t.date||"")+" · "+(t.note||""))
+);
+const right=document.createElement("div");
+right.append(text("b",(t.kind==="expense"?"−":"+")+money(t.amount)));
+right.append(button("Удалить",()=>{
+if(!confirm("Удалить операцию?"))return;
+data.transactions=data.transactions.filter(x=>x.id!==t.id);
+save();render();
+}));
+row.append(info,right);
+div.append(row);
+root.append(div);
+});
+}
+
+function renderGoals(){
+const root=$("goalList");
+root.replaceChildren();
+data.goals.forEach(g=>{
+const div=document.createElement("div");
+div.className="item";
+div.append(text("b",g.name));
+div.append(text("p",money(g.saved||0)+" / "+money(g.target)));
+const bar=document.createElement("div");
+bar.className="bar";
+const fill=document.createElement("i");
+fill.style.width=Math.min(100,(g.saved||0)/g.target*100)+"%";
+bar.append(fill);
+div.append(bar);
+const inp=document.createElement("input");
+inp.type="number";inp.min="0.01";inp.placeholder="Пополнить цель, ₽";
+div.append(inp);
+div.append(button("Пополнить",()=>{
+const n=Number(inp.value);
+if(!(n>0))return alert("Укажи сумму");
+g.saved=(Number(g.saved)||0)+n;
+save();render();
+}));
+div.append(button("Удалить цель",()=>{
+if(!confirm("Удалить цель?"))return;
+data.goals=data.goals.filter(x=>x.id!==g.id);
+save();render();
+}));
+root.append(div);
+});
+}
+
+function renderDebts(){
+const root=$("debtList");
+root.replaceChildren();
+data.debts.forEach(d=>{
+const div=document.createElement("div");
+div.className="item";
+div.append(text("b",d.name));
+div.append(text("p","Осталось: "+money(d.amount)));
+const inp=document.createElement("input");
+inp.type="number";inp.min="0.01";inp.placeholder="Погашено, ₽";
+div.append(inp);
+div.append(button("Погасить",()=>{
+const n=Number(inp.value);
+if(!(n>0)||n>d.amount)return alert("Проверь сумму");
+d.amount-=n;
+save();render();
+alert("Долг обновлён. Запиши платёж в расходах отдельно.");
+}));
+div.append(button("Удалить",()=>{
+if(!confirm("Удалить долг?"))return;
+data.debts=data.debts.filter(x=>x.id!==d.id);
+save();render();
+}));
+root.append(div);
+});
+}
+
+function renderBills(){
+const root=$("billList");
+root.replaceChildren();
+data.bills.forEach(b=>{
+const div=document.createElement("div");
+div.className="item";
+div.append(text("b",b.name));
+div.append(text("p",money(b.amount)+" · день месяца: "+b.day));
+div.append(button("Удалить",()=>{
+if(!confirm("Удалить платёж?"))return;
+data.bills=data.bills.filter(x=>x.id!==b.id);
+save();render();
+}));
+root.append(div);
+});
+}
+
+function renderPurchase(){
+const price=Number($("purchase").value)||0;
+if(!price){
+$("purchaseResult").textContent="Введи стоимость покупки.";
+return;
+}
+const p=period(new Date());
+const budget=periodBudget(p);
+const totals=periodTotals(p);
+const remaining=(Number(budget.life)||0)+totals.income-totals.spent;
+const days=daysLeft(new Date(),p.next);
+$("purchaseResult").textContent=
+"После покупки останется "+money(remaining-price)+
+". Новый дневной лимит: "+money(Math.max(0,(remaining-price)/days))+
+(price>remaining?". Покупка превышает бюджет!":"");
+}
+
+function renderCharts(){
+const root=$("charts");
+root.replaceChildren();
+const month=iso(new Date()).slice(0,7);
+const totals={};
+data.transactions.filter(x=>
+x.kind==="expense"&&x.date.startsWith(month)
+).forEach(x=>{
+const cat=x.category||"Другое";
+totals[cat]=(totals[cat]||0)+Number(x.amount);
+});
+const entries=Object.entries(totals).sort((a,b)=>b[1]-a[1]);
+const max=Math.max(1,...entries.map(x=>x[1]));
+if(!entries.length){
+root.append(text("p","Расходов пока нет"));
+return;
+}
+entries.forEach(([name,value])=>{
+const div=document.createElement("div");
+div.className="item";
+div.append(text("p",name+" · "+money(value)));
+const bar=document.createElement("div");
+bar.className="bar";
+const fill=document.createElement("i");
+fill.style.width=(value/max*100)+"%";
+bar.append(fill);
+div.append(bar);
+root.append(div);
+});
+}
+
+$("salaryForm").onsubmit=e=>{
+e.preventDefault();
+const pay=val("salary"),life=val("living");
+if(!Number.isFinite(pay)||!Number.isFinite(life)||pay<0||life<0||life>pay)
+return alert("Проверь суммы зарплаты");
+const p=period(new Date());
+data.periods[p.key]={pay,life};
+save();render();
+alert("Зарплата сохранена");
 };
 
-el('transactionForm').onsubmit=e=>{
-  e.preventDefault();
-  const amount=Number(el('amount').value);
-  if(!Number.isFinite(amount)||amount<=0)
-    return alert('Укажи положительную сумму');
-  state.transactions.push({
-    id:Date.now()+Math.random(),
-    date:el('date').value,
-    kind:el('kind').value,
-    amount,
-    category:el('category').value,
-    note:el('note').value.trim()
-  });
-  save();
-  el('amount').value='';
-  el('note').value='';
-  render();
+$("expenseForm").onsubmit=e=>{
+e.preventDefault();
+const amount=val("amount");
+if(!(amount>0))return alert("Неверная сумма");
+data.transactions.push({
+id:uid(),
+date:$("date").value,
+kind:$("kind").value,
+amount,
+category:$("category").value,
+note:$("note").value.trim()
+});
+save();
+$("amount").value="";
+$("note").value="";
+render();
 };
 
-el('saveSettings').onclick=()=>{
-  for(const k of ['pay10','pay25','life10','life25']){
-    let n=Number(el(k).value);
-    if(!Number.isFinite(n)||n<0)return alert('Проверь суммы');
-    state[k]=n;
-  }
-  save();
-  render();
-  alert('План сохранён. Уже настроенные периоды не изменены.');
+$("goalForm").onsubmit=e=>{
+e.preventDefault();
+data.goals.push({
+id:uid(),name:$("goalName").value.trim(),
+target:val("goalTarget"),saved:0
+});
+save();e.target.reset();render();
 };
 
-el('savePeriod').onclick=()=>{
-  let pay=Number(el('actualPay').value);
-  let life=Number(el('actualLife').value);
-  if(!Number.isFinite(pay)||!Number.isFinite(life)||pay<0||life<0||life>pay)
-    return alert('Проверь суммы: на жизнь нельзя выделить больше полученной зарплаты');
-  const p=getPeriod(new Date());
-  state.periods[p.key]={pay,life};
-  save();
-  render();
-  alert('Фактические суммы периода сохранены');
+$("debtForm").onsubmit=e=>{
+e.preventDefault();
+data.debts.push({
+id:uid(),name:$("debtName").value.trim(),
+amount:val("debtAmount")
+});
+save();e.target.reset();render();
 };
 
-el('saveFunds').onclick=()=>{
-  for(const k of ['reserve','savings']){
-    const n=Number(el(k).value);
-    if(!Number.isFinite(n)||n<0)return alert('Проверь суммы');
-    state[k]=n;
-  }
-  save();
-  render();
+$("billForm").onsubmit=e=>{
+e.preventDefault();
+data.bills.push({
+id:uid(),name:$("billName").value.trim(),
+amount:val("billAmount"),day:val("billDay")
+});
+save();e.target.reset();render();
 };
 
-el('export').onclick=()=>{
-  const blob=new Blob([JSON.stringify({
-    version:1,
-    exportedAt:new Date().toISOString(),
-    data:state
-  },null,2)],{type:'application/json'});
-  const a=document.createElement('a');
-  a.href=URL.createObjectURL(blob);
-  a.download=`fin-calendar-backup-${iso(new Date())}.json`;
-  a.click();
-  setTimeout(()=>URL.revokeObjectURL(a.href),3000);
+$("saveFunds").onclick=()=>{
+if(val("reserve")<0||val("savings")<0)return alert("Проверь суммы");
+data.reserve=val("reserve");
+data.savings=val("savings");
+save();render();
+alert("Сохранено");
 };
 
-el('importButton').onclick=()=>el('import').click();
-el('import').onchange=async e=>{
-  const file=e.target.files[0];
-  if(!file)return;
-  try{
-    const json=JSON.parse(await file.text());
-    if(!json.data||!Array.isArray(json.data.transactions)||!json.data.periods)
-      throw Error('Неверный формат');
-    if(!confirm('Заменить текущие записи данными из копии?'))return;
-    state={...defaults,...json.data};
-    save();
-    render();
-    alert('Данные восстановлены');
-  }catch(err){
-    alert('Не удалось восстановить: '+err.message);
-  }finally{
-    e.target.value='';
-  }
+$("saveSettings").onclick=()=>{
+for(const k of ["pay10","pay25","life10","life25"]){
+if(val(k)<0)return alert("Проверь суммы");
+data[k]=val(k);
+}
+save();render();
+alert("План сохранён");
 };
+
+$("addCategory").onclick=()=>{
+const name=$("newCategory").value.trim();
+if(!name)return;
+if(!data.categories.includes(name))data.categories.push(name);
+$("newCategory").value="";
+save();render();
+};
+
+$("purchase").oninput=renderPurchase;
+
+$("export").onclick=()=>{
+const blob=new Blob([JSON.stringify({
+version:2,exportedAt:new Date().toISOString(),data
+},null,2)],{type:"application/json"});
+const url=URL.createObjectURL(blob);
+const a=document.createElement("a");
+a.href=url;
+a.download="moi-finansy-backup-"+iso(new Date())+".json";
+document.body.append(a);
+a.click();
+a.remove();
+setTimeout(()=>URL.revokeObjectURL(url),10000);
+};
+
+$("importButton").onclick=()=>$("importFile").click();
+$("importFile").onchange=async e=>{
+try{
+const file=e.target.files[0];
+if(!file)return;
+const json=JSON.parse(await file.text());
+if(!json.data||!Array.isArray(json.data.transactions)||!json.data.periods)
+throw Error("Неверный формат");
+if(!confirm("Заменить текущие данные резервной копией?"))return;
+data={...defaults,...json.data};
+for(const k of ["transactions","goals","debts","bills"]){
+if(!Array.isArray(data[k]))data[k]=[];
+}
+if(!Array.isArray(data.categories))data.categories=[...defaults.categories];
+save();render();
+alert("Данные восстановлены");
+}catch(err){
+alert("Ошибка: "+err.message);
+}finally{
+e.target.value="";
+}
+};
+
+$("date").value=iso(new Date());
 render();
 })();
 </script>
