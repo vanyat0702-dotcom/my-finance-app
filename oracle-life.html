@@ -1,20 +1,959 @@
-<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>ORACLE LIFE — Demo</title><style>
-:root{--bg:#061511;--panel:#0e2920;--panel2:#153a2d;--edge:#2b5b47;--gold:#ebca80;--green:#24e5a0;--ink:#e5f0e8;--muted:#a9c8b5;--red:#ffaaa9}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px system-ui,-apple-system,Arial}button,input,textarea,select{font:inherit}button{cursor:pointer}.app{max-width:740px;margin:auto;min-height:100vh;padding-bottom:90px}.header{padding:18px 15px;background:linear-gradient(120deg,#103728,#061511);border-bottom:1px solid var(--edge)}.brand{font:800 27px Georgia,serif;color:var(--gold)}.brand span{color:var(--green)}.slogan{font-size:10px;color:var(--gold);letter-spacing:.5px;margin-top:6px}.muted{color:var(--muted);font-size:12px;line-height:1.6}.page{padding:13px}.card{background:var(--panel);border:1px solid var(--edge);border-radius:15px;padding:14px;margin-bottom:12px}.title{color:var(--gold);font-size:18px;font-weight:800;margin:0 0 12px}.smalltitle{color:var(--gold);font-size:14px;font-weight:750}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.tile{background:var(--panel2);padding:11px;border-radius:10px;min-width:0}.value{font-size:21px;font-weight:800;color:var(--gold);overflow-wrap:anywhere}.row{display:flex;align-items:center;justify-content:space-between;gap:9px}.row>*{min-width:0}.field{width:100%;background:#081e17;color:#f5e7c6;border:1px solid #3b7057;border-radius:9px;padding:11px;outline:none}.field:focus{border-color:var(--green)}label{display:block;color:#d0e3d5;font-size:12px;margin:11px 0 5px}.btn{border:0;background:var(--green);color:#05251a;padding:11px;border-radius:10px;font-weight:800}.btn.alt{background:#1a4333;border:1px solid #48765b;color:#e7f1e9}.btn.warn{background:#67363c;color:#ffe6e4}.btn:disabled{opacity:.4}.full{width:100%}.line{border-bottom:1px solid var(--edge);padding:10px 0}.gold{color:var(--gold)!important}.red{color:var(--red)!important}.green{color:#8cf0b9!important}.nav{position:fixed;bottom:0;left:0;right:0;background:#09241a;border-top:1px solid var(--edge);display:grid;grid-template-columns:repeat(5,1fr);max-width:740px;margin:auto;padding:6px 2px calc(6px + env(safe-area-inset-bottom))}.nav button{background:transparent;border:0;color:#b7d2c0;padding:7px 1px;border-radius:9px;font-size:11px}.nav button.active{background:#18513a;color:var(--gold)}.nav b{display:block;font-size:18px}.subtabs{display:flex;gap:6px;overflow-x:auto;margin-bottom:12px}.subtabs button{flex:0 0 auto;border:1px solid var(--edge);background:#13382a;color:#d5e6d8;padding:9px;border-radius:9px}.subtabs button.active{border-color:var(--gold);color:var(--gold)}.notice{background:#392329;border:1px solid #99555c;color:#ffcece;border-radius:10px;padding:12px}.good{background:#153c2c;border:1px solid #3b845c;color:#b2f4ce;border-radius:10px;padding:12px}.task{display:flex;gap:10px;align-items:center;padding:11px 0;border-bottom:1px solid var(--edge)}.task input{accent-color:var(--green);width:19px;height:19px}.task span{color:var(--gold);flex:1}.tag{border:1px solid var(--edge);border-radius:99px;padding:4px 8px;color:#c9dfce;font-size:11px}.hidden{display:none!important}.report{white-space:pre-wrap;overflow-wrap:anywhere;background:#071c15;padding:12px;border-radius:10px;font-size:12px;line-height:1.6;color:#dcebdd;max-height:420px;overflow:auto}.cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px}.cal>div{text-align:center;font-size:10px;padding:7px 1px;background:#15372a;border-radius:5px;min-width:0}.cal .weekday{background:transparent;color:#a8c7b2}.cal .today{outline:1px solid var(--green)}.cal small{display:block;color:#7cdbab;font-size:9px}.flex{display:flex;gap:8px}.flex>*{flex:1;min-width:0}pre{font:inherit}details summary{cursor:pointer;color:var(--gold)}.foot{text-align:center;padding:12px;color:#91b3a0;font-size:11px}
-</style></head><body><div class="app"><header class="header"><div class="brand">◈ ORACLE <span>LIFE</span></div><div class="slogan">ПОРЯДОК В НАСТОЯЩЕМ. ВЛАСТЬ НАД БУДУЩИМ.</div><div class="muted" style="margin-top:8px">MR. ARCANUM · Личный командный центр · DEMO</div></header><main class="page" id="main"><div class="card" style="padding:22px;margin:14px 0;border:1px solid #2b6048;border-radius:14px;background:#102e24;color:#e9c77e"><h2>◈ ORACLE LIFE · Загрузка</h2><p style="color:#d9e9dc">Инициализация приложения. Если экран не сменится, пришли скриншот.</p><p style="color:#d9e9dc">Проверяем запуск основных разделов.</p><p style="color:#a8dabb"></p></div></main><nav class="nav" id="nav"><button onclick="location.reload()">🏛️<br>Главная</button><button onclick="document.getElementById('main').scrollIntoView()">📅<br>Планы</button><button onclick="document.getElementById('main').scrollIntoView()">💳<br>Финансы</button><button onclick="document.getElementById('main').scrollIntoView()">📈<br>Трейдинг</button><button onclick="document.getElementById('main').scrollIntoView()">⚙️<br>Ещё</button></nav></div><input id="importFile" type="file" accept="application/json" hidden><script>
-window.addEventListener('error',function(e){var m=document.getElementById('main');if(m)m.innerHTML='<div style="padding:20px;background:#241b18;color:#ffd9bf;border:1px solid #d18b60;border-radius:12px"><h2>⚠️ Ошибка запуска</h2><p>'+String(e.message||'Неизвестная ошибка').replace(/</g,'&lt;')+'</p><p>Сделай скриншот этого сообщения и пришли в чат.</p></div>';});
-window.addEventListener('unhandledrejection',function(e){var m=document.getElementById('main');if(m)m.insertAdjacentHTML('afterbegin','<p style="color:#ffb3b3">Ошибка: '+String(e.reason).replace(/</g,'&lt;')+'</p>');});
-(()=>{'use strict';const K='oracle-life-v6-demo',LEGACY='personal-finance-calendar-v1';const today=()=>new Date().toISOString().slice(0,10),money=n=>Math.round(n).toLocaleString('ru-RU')+' ₽',esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const base=()=>({tab:'home',sub:'dev',planSub:'evening',financeSub:'budget',life:20000,bank:15000,days:10,limit:2000,expenses:[{id:1,name:'Продукты',amount:1800,date:today()},{id:2,name:'Транспорт',amount:1200,date:today()}],comp:[],bankOps:[],tasks:[{id:3,name:'Поработать над Oracle',duration:120,selected:true,done:false,deferred:false},{id:4,name:'Почитать книгу',duration:40,selected:false,done:false,deferred:false}],shift:'off',trades:[],capital:500,tradeRules:{max:5,risk:1,stopLosses:2},dev:[],draft:{project:'Oracle Pro Terminal',agent:'Codex',date:today(),done:'',stop:'',issues:'',next:'',files:'',git:'',source:''},reports:[],ideas:[],notes:[],mood:'🙂',sleep:8,habits:[],focus:120,periods:[],nextId:5});let s;try{s=Object.assign(base(),JSON.parse(localStorage.getItem(K)||'{}'))}catch{s=base()}let temp={raw:'',status:'',confirm:false,partial:false};const save=()=>{try{localStorage.setItem(K,JSON.stringify(s))}catch(e){window.__oracleStorageError=String(e)}};const id=()=>s.nextId++;const spent=()=>s.expenses.reduce((a,e)=>a+Number(e.amount),0),todaySpent=()=>s.expenses.filter(e=>e.date===today()).reduce((a,e)=>a+Number(e.amount),0),covered=()=>s.comp.filter(x=>x.date===today()).reduce((a,x)=>a+x.amount,0),excess=()=>Math.max(0,todaySpent()-s.limit),due=()=>Math.max(0,excess()-covered()),pnl=()=>s.trades.reduce((a,t)=>a+t.pnl,0),capital=()=>s.capital+pnl();const $=x=>document.querySelector(x);const card=(title,body)=>`<section class="card"><h2 class="title">${title}</h2>${body}</section>`;const tile=(name,val,cls='')=>`<div class="tile"><div class="muted">${name}</div><div class="value ${cls}">${val}</div></div>`;const button=(label,action,cls='')=>`<button class="btn ${cls}" data-action="${action}">${label}</button>`;const form=(name,inner)=>`<form data-form="${name}">${inner}</form>`;const field=(name,label,type='text',value='',other='')=>`<label>${label}</label><input class="field" name="${name}" type="${type}" value="${esc(value)}" ${other}>`;const area=(name,label,value='',rows=3)=>`<label>${label}</label><textarea class="field" name="${name}" rows="${rows}">${esc(value)}</textarea>`;const tabs=(arr,key)=>`<div class="subtabs">${arr.map(([a,b])=>`<button data-${key}="${a}" class="${s[key]===a?'active':''}">${b}</button>`).join('')}</div>`;const item=(name,val)=>`<div class="row line"><span class="gold">${esc(name)}</span><b>${val}</b></div>`;
-function home(){let unfinished=s.tasks.filter(t=>!t.done&&!t.deferred).length;let last=s.reports[0];return card('🏛️ Командный центр',`<div class="grid">${tile('Бюджет на жизнь',money(s.life-spent()))}${tile('Свободный банк',money(s.bank))}${tile('Задач осталось',unfinished)}${tile('Торговый результат',(pnl()>=0?'+':'')+pnl().toFixed(2)+' $',pnl()>=0?'green':'red')}</div><p class="muted">${({off:'🏡 Выходной',day:'☀️ Дневная смена',night:'🌙 Ночная смена',recovery:'😴 Отсыпной'})[s.shift]}</p><div class="flex">${button('＋ Расход','go-finance')}${button('💻 DEV','go-dev','alt')}</div>`)+(due()?card('⚠️ Внимание',`<div class="notice">Перерасход сегодня: ${money(due())}</div><div style="margin-top:10px">${button('Закрыть из банка','go-finance')}</div>`):'')+card('💻 Последняя работа',last?`<div class="gold"><b>${esc(last.project)}</b> · ${esc(last.agent)}</div><p class="muted">${esc(last.stop||last.done||'Нет описания')}</p>${button('📋 Скопировать для ChatGPT','copy-last')}`:`<p class="muted">Пока нет сохранённой сессии.</p>${button('Добавить отчёт','go-dev')}`)+card('⚡ Быстрый доступ',`<div class="grid">${button('📅 План дня','go-plans')}${button('📈 Торговля','go-trade')}${button('💡 Идеи','go-ideas','alt')}${button('🌙 Итоги дня','go-report','alt')}</div>`)}
-function calendar(){let d=new Date(),y=d.getFullYear(),m=d.getMonth(),first=(new Date(y,m,1).getDay()+6)%7,days=new Date(y,m+1,0).getDate();let cells=['Пн','Вт','Ср','Чт','Пт','Сб','Вс'].map(x=>`<div class="weekday">${x}</div>`);for(let i=0;i<first;i++)cells.push('<div style="background:transparent"></div>');for(let i=1;i<=days;i++){let dt=`${y}-${String(m+1).padStart(2,'0')}-${String(i).padStart(2,'0')}`,v=s.expenses.filter(e=>e.date===dt).reduce((a,e)=>a+e.amount,0);cells.push(`<div class="${i===d.getDate()?'today':''}">${i}<small style="color:${v?'#ffaaaa':'#7cdbab'}">${v?'−'+v:'·'}</small></div>`)}return card('📅 Финансовый календарь',`<div class="muted" style="margin-bottom:9px">${d.toLocaleDateString('ru-RU',{month:'long',year:'numeric'})} · Расходы по дням</div><div class="cal">${cells.join('')}</div>`)}
-function finance(){let subtabs=tabs([['budget','💳 Бюджет'],['bank','🏦 Банк'],['history','📜 История']],'financeSub');if(s.financeSub==='history')return subtabs+card('📜 История банка',s.bankOps.length?s.bankOps.slice().reverse().map(o=>item(o.note,`<span class="${o.delta<0?'red':'green'}">${o.delta>0?'+':''}${money(o.delta)}</span>`)).join(''):'<p class="muted">Операций пока нет.</p>')+card('📒 Расходы',s.expenses.slice().reverse().map(e=>item(e.name,`<span class="red">−${money(e.amount)}</span>`)).join(''));if(s.financeSub==='bank')return subtabs+card('🏦 Свободный банк',`${tile('Доступно',money(s.bank))}<p class="muted">Банк отдельно от бюджета на жизнь. Компенсация не является доходом.</p>${form('bank',field('amount','Сумма, ₽','number',1000,'min="1" required')+`<div class="flex" style="margin-top:10px"><button class="btn" name="op" value="add">＋ Пополнить</button><button class="btn alt" name="op" value="take">− Снять</button></div>`)}`)+compensation();return subtabs+card('💰 Деньги на жизнь',form('life',field('life','Выделено после зарплаты, ₽','number',s.life,'min="0" required')+field('days','Дней до следующей зарплаты','number',s.days,'min="1" required')+`<button class="btn full" style="margin-top:10px">Сохранить бюджет</button>`)+`<div class="grid" style="margin-top:12px">${tile('Осталось на жизнь',money(s.life-spent()),s.life-spent()<0?'red':'')}${tile('Среднее на день',money(Math.max(0,s.life-spent())/Math.max(1,s.days)))}</div><p class="muted">Расходы учитываются за демонстрационный зарплатный период. В полноценной версии периоды 10–25 и 25–10 будут отдельными.</p>`)+card('💳 Мой бюджет',`<div class="grid">${tile('Лимит сегодня',money(s.limit))}${tile('Потрачено сегодня',money(todaySpent()),todaySpent()>s.limit?'red':'')}${tile('Можно потратить',money(Math.max(0,s.limit-todaySpent())),'green')}${tile('Свободный банк',money(s.bank))}</div>${form('limit',field('limit','Дневной лимит, ₽','number',s.limit,'min="0" required')+`<button class="btn alt full" style="margin-top:9px">Изменить лимит</button>`)}`)+calendar()+compensation()+card('＋ Добавить расход',form('expense',field('name','На что потратил?','text','','required')+field('amount','Сумма, ₽','number','','min="1" required')+`<button class="btn full" style="margin-top:10px">Записать расход</button>`))+card('🧾 Расходы',s.expenses.slice().reverse().map(e=>item(e.name,`<span class="red">−${money(e.amount)}</span>`)).join(''))}
-function compensation(){let x=due(),a=Math.min(x,s.bank);return card('⚖️ Компенсация перерасхода',`<div class="${x?'notice':'good'}"><div class="row"><b>${x?'⚠️ Осталось покрыть':'✓ Перерасход покрыт'}</b><b>${money(x)}</b></div><p class="muted">Всего превышено ${money(excess())} · Компенсировано ${money(covered())}</p></div>${x?`<div class="flex" style="margin-top:11px">${button('🏦 Закрыть '+money(a),'cover')}${button('Частично','partial','alt')}</div>`:''}${s.comp.length?`<div style="margin-top:9px">${button('↶ Отменить последнюю компенсацию','undo','alt')}</div>`:''}${x>s.bank?'<p class="red">Средств в банке недостаточно для полного покрытия.</p>':''}`)}
-function plans(){let p=tabs([['evening','🌙 Идеи'],['morning','☀️ Выбор'],['schedule','📅 План'],['deferred','📥 Отложено']],'planSub');let tasks=s.tasks.filter(t=>s.planSub==='deferred'?t.deferred:!t.deferred);if(s.planSub==='schedule')return p+card('📅 План дня',`<p class="muted">Пример распределения: начало 10:00, между задачами 15 минут. Полный учёт смен и событий добавим в APK.</p>${(()=>{let t=600;return tasks.filter(x=>x.selected&&!x.done).map(x=>{let time=`${String(Math.floor(t/60)%24).padStart(2,'0')}:${String(t%60).padStart(2,'0')}`;t+=x.duration+15;return `<div class="task"><b class="green">${time}</b><span>${esc(x.name)} · ${x.duration} мин</span><button class="btn alt" data-action="finish-${x.id}">✓</button></div>`}).join('')})()}<div style="margin-top:12px">${button('🚨 Сегодня не по плану','defer','warn')}</div>`);return p+card(s.planSub==='evening'?'🌙 Идеи на завтра':s.planSub==='morning'?'☀️ Что берём в работу?':'📥 Отложенные задачи',`<p class="muted">${s.planSub==='evening'?'Идеи не становятся обязательными автоматически.':s.planSub==='morning'?'Отметь дела для сегодняшнего расписания.':'Возвращай задачи в список, когда будешь готов.'}</p>${tasks.map(t=>`<div class="task">${s.planSub==='morning'?`<input type="checkbox" data-select="${t.id}" ${t.selected?'checked':''}>`:s.planSub==='deferred'?'📥':'✦'}<span>${esc(t.name)} · ${t.duration} мин</span>${s.planSub==='deferred'?`<button class="btn alt" data-action="restore-${t.id}">Вернуть</button>`:''}</div>`).join('')}${s.planSub==='evening'?form('task',field('name','Новое дело','text','','required')+field('duration','Длительность, минут','number',60,'min="5" required')+`<button class="btn full" style="margin-top:10px">＋ Добавить идею</button>`):''}${s.planSub==='morning'?`<div style="margin-top:10px">${button('✨ Распределить','schedule','full')}</div>`:''}`)+card('🕰️ Рабочий режим',`<select class="field" id="shift"><option value="off" ${s.shift==='off'?'selected':''}>🏡 Выходной</option><option value="day" ${s.shift==='day'?'selected':''}>☀️ Дневная смена</option><option value="night" ${s.shift==='night'?'selected':''}>🌙 Ночная смена</option><option value="recovery" ${s.shift==='recovery'?'selected':''}>😴 Отсыпной</option></select>`)}
-const sections=[['project',/^(?:проект|project)\s*[:：]\s*(.*)$/i],['agent',/^(?:помощник|исполнитель|agent|assistant)\s*[:：]\s*(.*)$/i],['date',/^(?:дата|date)\s*[:：]\s*(.*)$/i],['done',/^(?:сделано|что сделали|выполнено|результаты|done)\s*[:：]?\s*(.*)$/i],['stop',/^(?:где остановились|точка остановки|текущий статус)\s*[:：]?\s*(.*)$/i],['issues',/^(?:проблемы|блокеры|ошибки|ограничения)\s*[:：]?\s*(.*)$/i],['next',/^(?:следующие задачи|следующие шаги|что завтра|план на завтра)\s*[:：]?\s*(.*)$/i],['files',/^(?:изменённые файлы|измененные файлы|файлы|changed files)\s*[:：]?\s*(.*)$/i],['git',/^(?:git|ветка|коммит|branch|commit)\s*[:：]?\s*(.*)$/i]];function parseReport(raw){let data={},current=null;for(let line of raw.split(/\r?\n/)){let clean=line.trim().replace(/^#{1,6}\s*/,'').replace(/\*\*/g,'');let found=false;for(let [key,re] of sections){let m=clean.match(re);if(m){current=key;data[key]=(m[1]||'').trim();found=true;break}}if(!found&&current&&line.trim())data[current]=(data[current]?data[current]+'\n':'')+line.trim()}return data}const example=`ПРОЕКТ: Oracle Pro Terminal\nПОМОЩНИК: Codex\nДАТА: ${today()}\nСДЕЛАНО:\n- Проверили запуск локальной версии.\n- Подготовили список проверок Private Alpha.\nГДЕ ОСТАНОВИЛИСЬ:\nНа проверке локального интерфейса.\nПРОБЛЕМЫ:\nПолный анализ на реальных данных не подтверждён.\nСЛЕДУЮЩИЕ ЗАДАЧИ:\n- Проверить актуальную Git-ветку.\n- Продолжить Private Alpha.\nИЗМЕНЁННЫЕ ФАЙЛЫ:\nНе указаны.\nGIT:\nНе проверялся.`;const instruction=`Подготовь передачу смены для ORACLE LIFE. Строгие заголовки: ПРОЕКТ:, ПОМОЩНИК:, ДАТА:, СДЕЛАНО:, ГДЕ ОСТАНОВИЛИСЬ:, ПРОБЛЕМЫ:, СЛЕДУЮЩИЕ ЗАДАЧИ:, ИЗМЕНЁННЫЕ ФАЙЛЫ:, GIT:. Пиши только подтверждённые факты. Отделяй сделанное от планов. Если данных нет, пиши «Неизвестно». Не выдумывай коммиты, тесты и файлы.`;function reportText(r){return `ORACLE LIFE · ПЕРЕДАЧА СМЕНЫ\nПРОЕКТ: ${r.project}\nПОМОЩНИК: ${r.agent}\nДАТА: ${r.date}\n\nСДЕЛАНО:\n${r.done||'Не указано'}\n\nГДЕ ОСТАНОВИЛИСЬ:\n${r.stop||'Не указано'}\n\nПРОБЛЕМЫ:\n${r.issues||'Не указано'}\n\nСЛЕДУЮЩИЕ ЗАДАЧИ:\n${r.next||'Не указано'}\n\nИЗМЕНЁННЫЕ ФАЙЛЫ:\n${r.files||'Не указано'}\n\nGIT:\n${r.git||'Не указано'}\n\nПОЛНЫЙ ОРИГИНАЛЬНЫЙ ОТЧЁТ:\n${r.source||'Не предоставлен'}\n\nChatGPT, это последняя рабочая сессия. Учитывай подтверждённые результаты, не принимай планы за выполненную работу. Помоги продолжить с точки остановки.`}function dev(){let p=tabs([['dev','💻 DEV'],['ideas','💡 Идеи'],['journal','📓 Дневник'],['report','🌙 Итоги'],['settings','⚙️ Данные']],'sub');if(s.sub==='ideas')return p+card('💡 Хранилище идей',s.ideas.map(x=>`<div class="line gold">✦ ${esc(x)}</div>`).join('')+form('idea',field('name','Новая идея','text','','required')+'<button class="btn full" style="margin-top:10px">Добавить</button>'));if(s.sub==='journal')return p+card('📓 Дневник и настроение',`<div class="flex">${['😞','😐','🙂','😄','🔥'].map(m=>`<button class="btn ${s.mood===m?'':'alt'}" data-mood="${m}">${m}</button>`).join('')}</div>${form('note',area('note','Запись о сегодняшнем дне')+'<button class="btn full" style="margin-top:10px">Сохранить</button>')}${s.notes.slice().reverse().map(x=>`<div class="line gold">${esc(x)}</div>`).join('')}`);if(s.sub==='report')return p+card('🌙 Вечерний доклад',`<div class="grid">${tile('Дел выполнено',s.tasks.filter(t=>t.done).length)}${tile('Расходы сегодня',money(todaySpent()))}${tile('Сделки',s.trades.length)}${tile('DEV-сессии',s.reports.length)}</div><p class="muted">Настроение ${s.mood}. Незавершённых задач: ${s.tasks.filter(t=>!t.done).length}. ${due()?'Непокрытый перерасход '+money(due()):'Непокрытого перерасхода нет'}.</p><div class="gold">«Порядок в настоящем. Власть над будущим».</div>`);if(s.sub==='settings')return p+card('🔐 Данные и резервные копии',`<p class="muted">Данные сохраняются в localStorage браузера на этом устройстве. Экспортируй JSON перед очисткой браузера или переустановкой.</p><div class="grid">${button('⬇ Экспорт JSON','export')}${button('⬆ Импорт JSON','import','alt')}</div><p class="muted">Импорт заменяет данные этой демоверсии. Старое финансовое приложение и его ключ localStorage не затрагиваются.</p>${button('↻ Сбросить демо','reset','warn')}`);return p+card('💻 DEV MEMORY · Передача смены',`<div class="subtabs"><button data-devtab="import" class="${temp.devtab!=='fields'&&temp.devtab!=='latest'&&temp.devtab!=='archive'?'active':''}">📥 Импорт</button><button data-devtab="fields" class="${temp.devtab==='fields'?'active':''}">📝 Поля</button><button data-devtab="latest" class="${temp.devtab==='latest'?'active':''}">📋 Последняя</button><button data-devtab="archive" class="${temp.devtab==='archive'?'active':''}">📚 Архив</button></div>${devBody()}`)}function devBody(){let t=temp.devtab||'import';if(t==='import')return `<p class="muted">Вставь отчёт Codex/OpenCode. Оригинал останется без изменений.</p><textarea class="field" id="rawReport" rows="11" placeholder="Вставь полный отчёт...">${esc(temp.raw)}</textarea><div class="flex" style="margin-top:10px">${button('✨ Разобрать','parse')}${button('Пример','example','alt')}</div><div style="margin-top:10px">${button('📋 Шаблон для Codex','template','alt')}</div>`;if(t==='fields'){let r=s.draft;return `<p class="muted">${esc(temp.status||'Проверь поля перед сохранением.')}</p>${form('dev',field('project','Проект','text',r.project,'required')+`<label>Помощник</label><select class="field" name="agent">${['Codex','OpenCode','ChatGPT','Вручную'].map(x=>`<option ${x===r.agent?'selected':''}>${x}</option>`).join('')}</select>`+field('date','Дата','date',r.date)+area('done','✅ Сделано',r.done)+area('stop','📍 Где остановились',r.stop)+area('issues','🚧 Проблемы',r.issues)+area('next','🚀 Следующие задачи',r.next)+area('files','🗂️ Изменённые файлы',r.files)+area('git','🌿 Git / коммит',r.git)+`<button class="btn full" style="margin-top:12px">💾 Сохранить сессию</button>`)}`;if(t==='latest'){let r=s.reports[0];return r?`<div class="gold"><b>${esc(r.project)}</b> · ${esc(r.agent)} · ${esc(r.date)}</div>${[['Сделано',r.done],['Остановились',r.stop],['Проблемы',r.issues],['Что дальше',r.next]].map(([a,b])=>`<div class="tile" style="margin-top:9px"><div class="smalltitle">${a}</div><p style="white-space:pre-wrap">${esc(b||'Не указано')}</p></div>`).join('')}<div style="margin-top:12px">${button('📋 Скопировать для ChatGPT','copy-last','full')}</div><details style="margin-top:12px"><summary>Показать оригинальный отчёт</summary><pre class="report">${esc(r.source||'Оригинал не вставлялся')}</pre></details>`:'<p class="muted">Сессий пока нет.</p>'; }return s.reports.length?s.reports.map((r,i)=>`<div class="tile" style="margin-bottom:9px"><div class="gold"><b>${esc(r.project)}</b> · ${esc(r.agent)}</div><p class="muted">${esc(r.date)} · ${esc((r.done||'').slice(0,150))}</p><div class="flex">${button('Открыть','open-report-'+i,'alt')}${button('Копировать','copy-report-'+i)}</div></div>`).join(''):'<p class="muted">Архив пуст.</p>'}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ORACLE LIFE</title>
+<style>
+:root{
+ --bg:#061611;
+ --card:#102c22;
+ --card2:#183d2e;
+ --gold:#ebc77e;
+ --green:#27dfa0;
+ --text:#e7f1e9;
+ --muted:#aac6b5;
+ --line:#315e49;
+ --red:#ffabab;
 }
-function trade(){let wins=s.trades.filter(t=>t.pnl>0).length,loss=s.trades.filter(t=>t.pnl<0).length,streak=0;for(let i=s.trades.length-1;i>=0&&s.trades[i].pnl<0;i--)streak++;return card('📈 ORACLE TRADE',`<div class="grid">${tile('Торговый капитал',capital().toFixed(2)+' $')}${tile('Результат',(pnl()>=0?'+':'')+pnl().toFixed(2)+' $',pnl()>=0?'green':'red')}${tile('Сделки',s.trades.length+' / '+s.tradeRules.max)}${tile('Плюс / Минус',wins+' / '+loss)}</div>${s.trades.length>=s.tradeRules.max||streak>=s.tradeRules.stopLosses?'<div class="notice" style="margin-top:10px">⚠️ Достигнут дневной лимит дисциплины. Рекомендуется остановиться.</div>':'<p class="muted">Правила: 5 сделок, риск 1%, стоп после 2 минусов подряд. Это журнал, не торговые сигналы.</p>'}`)+card('＋ Записать сделку',form('trade',`<label>Актив</label><select class="field" name="asset"><option>EUR/USD</option><option>GBP/USD</option><option>USD/JPY</option><option>BTC/USDT</option></select>`+field('stake','Ставка, $','number',5,'min="0.01" step="0.01" required')+field('payout','Выплата при выигрыше, %','number',80,'min="0" max="100" required')+`<div class="flex" style="margin-top:10px"><button class="btn" name="result" value="win">✓ Плюс</button><button class="btn alt" name="result" value="loss">✕ Минус</button></div>`))+card('📜 Журнал сделок',s.trades.length?s.trades.slice().reverse().map(t=>item(t.asset,`<span class="${t.pnl>0?'green':'red'}">${t.pnl>0?'+':''}${t.pnl.toFixed(2)} $</span>`)).join(''):'<p class="muted">Сделок пока нет.</p>')}
-function render(){let labels=[['home','🏛️','Главная'],['plans','📅','Планы'],['finance','💳','Финансы'],['trade','📈','Трейдинг'],['more','⚙️','Ещё']];$('#nav').innerHTML=labels.map(([k,ico,txt])=>`<button data-tab="${k}" class="${s.tab===k?'active':''}"><b>${ico}</b>${txt}</button>`).join('');$('#main').innerHTML=({home,plans,finance,trade,more:dev})[s.tab]();save()}
-function copy(t){if(navigator.clipboard&&window.isSecureContext)navigator.clipboard.writeText(t).then(()=>alert('Скопировано!')).catch(()=>fallback(t));else fallback(t)}function fallback(t){let a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.top='0';document.body.append(a);a.select();let ok=false;try{ok=document.execCommand('copy')}catch{}a.remove();if(!ok)prompt('Скопируй текст вручную:',t);else alert('Скопировано!')}
-function bankOp(delta,note){s.bank+=delta;s.bankOps.push({id:id(),delta,note,date:today()})}
-document.addEventListener('click',e=>{let b=e.target.closest('[data-tab],[data-sub],[data-planSub],[data-financeSub],[data-devtab],[data-action],[data-mood]');if(!b)return;if(b.dataset.tab){s.tab=b.dataset.tab;render();return}if(b.dataset.sub){s.sub=b.dataset.sub;render();return}if(b.dataset.plansub){s.planSub=b.dataset.plansub;render();return}if(b.dataset.financesub){s.financeSub=b.dataset.financesub;render();return}if(b.dataset.devtab){temp.devtab=b.dataset.devtab;render();return}if(b.dataset.mood){s.mood=b.dataset.mood;render();return}let a=b.dataset.action;if(!a)return;if(a.startsWith('go-')){let x=a.slice(3);s.tab=({dev:'more',ideas:'more',report:'more'})[x]||x;if(x==='dev')s.sub='dev';if(x==='ideas')s.sub='ideas';if(x==='report')s.sub='report';render();return}if(a==='cover'||a==='partial'){let max=Math.min(due(),s.bank);if(max<=0){alert('Нет суммы для компенсации.');return}let n=max;if(a==='partial'){let v=prompt('Сумма компенсации (максимум '+money(max)+'):',String(max));if(v===null)return;n=Number(v);if(!Number.isFinite(n)||n<=0||n>max){alert('Некорректная сумма');return}}if(confirm(`Компенсировать ${money(n)}? Свободный банк станет ${money(s.bank-n)}.`)){bankOp(-n,'Компенсация перерасхода');s.comp.push({id:id(),amount:n,date:today()});render()}return}if(a==='undo'){let c=s.comp.pop();if(c){bankOp(c.amount,'Отмена компенсации');render()}return}if(a==='schedule'){s.planSub='schedule';render();return}if(a==='defer'){s.tasks.forEach(t=>{if(t.selected&&!t.done){t.deferred=true;t.selected=false}});s.planSub='deferred';render();return}if(a.startsWith('finish-')){let t=s.tasks.find(x=>x.id===Number(a.slice(7)));if(t)t.done=true;render();return}if(a.startsWith('restore-')){let t=s.tasks.find(x=>x.id===Number(a.slice(8)));if(t)t.deferred=false;render();return}if(a==='example'){temp.raw=example;render();return}if(a==='parse'){temp.raw=$('#rawReport')?.value||'';if(!temp.raw.trim()){alert('Вставь отчёт');return}let data=parseReport(temp.raw);s.draft={project:data.project||'Oracle Pro Terminal',agent:data.agent||'Codex',date:/^\d{4}-\d{2}-\d{2}$/.test(data.date||'')?data.date:today(),done:data.done||'',stop:data.stop||'',issues:data.issues||'',next:data.next||'',files:data.files||'',git:data.git||'',source:temp.raw};temp.status=`Распознано ${Object.keys(data).length} из 9 полей. Проверь перед сохранением.`;temp.devtab='fields';render();return}if(a==='template'){copy(instruction);return}if(a==='copy-last'){if(s.reports[0])copy(reportText(s.reports[0]));return}if(a.startsWith('copy-report-')){let r=s.reports[Number(a.slice(12))];if(r)copy(reportText(r));return}if(a.startsWith('open-report-')){let r=s.reports[Number(a.slice(12))];if(r){s.reports.splice(Number(a.slice(12)),1);s.reports.unshift(r);temp.devtab='latest';render()}return}if(a==='export'){let blob=new Blob([JSON.stringify({app:'ORACLE LIFE',version:6,data:s},null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download='oracle-life-backup-'+today()+'.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),3000);return}if(a==='import'){$('#importFile').click();return}if(a==='reset'&&confirm('Удалить все данные демоверсии?')){s=base();temp={raw:'',status:''};render()}});
-document.addEventListener('change',e=>{let x=e.target;if(x.id==='shift'){s.shift=x.value;render()}if(x.dataset.select){let t=s.tasks.find(t=>t.id===Number(x.dataset.select));if(t){t.selected=x.checked;save()}}});document.addEventListener('input',e=>{if(e.target.id==='rawReport')temp.raw=e.target.value});document.addEventListener('submit',e=>{let f=e.target.closest('form[data-form]');if(!f)return;e.preventDefault();let d=Object.fromEntries(new FormData(f)),n=Number(d.amount),name=(d.name||'').trim();switch(f.dataset.form){case'life':if(Number(d.life)<0||Number(d.days)<1)return;s.life=Number(d.life);s.days=Number(d.days);break;case'limit':if(Number(d.limit)<0)return;s.limit=Number(d.limit);break;case'expense':if(!name||n<=0)return;s.expenses.push({id:id(),name,amount:n,date:today()});break;case'bank':if(n<=0)return;if(e.submitter?.value==='take'){if(n>s.bank){alert('Недостаточно средств');return}bankOp(-n,'Снятие из банка')}else bankOp(n,'Пополнение банка');break;case'task':if(!name||Number(d.duration)<=0)return;s.tasks.push({id:id(),name,duration:Number(d.duration),selected:false,done:false,deferred:false});break;case'trade':{let stake=Number(d.stake),payout=Number(d.payout);if(stake<=0||payout<0||payout>100)return;let result=e.submitter?.value,p=result==='win'?stake*payout/100:-stake;s.trades.push({id:id(),asset:d.asset,pnl:p,stake,payout,date:today()});break}case'dev':s.reports.unshift({...d,source:s.draft.source||temp.raw,id:id()});s.draft={project:d.project,agent:d.agent,date:d.date,done:d.done,stop:d.stop,issues:d.issues,next:d.next,files:d.files,git:d.git,source:s.draft.source||temp.raw};temp.devtab='latest';break;case'idea':if(name)s.ideas.push(name);break;case'note':if(d.note.trim())s.notes.push(d.note.trim());break}render()});$('#importFile').addEventListener('change',async e=>{let f=e.target.files?.[0];if(!f)return;try{let v=JSON.parse(await f.text());if(v.app!=='ORACLE LIFE'||!v.data||!Array.isArray(v.data.expenses))throw Error('Неизвестный формат');if(confirm('Заменить текущие данные резервной копией?')){s=Object.assign(base(),v.data);render()}}catch(err){alert('Ошибка импорта: '+err.message)}e.target.value=''});render()})();//
-</script></body></html>
+*{box-sizing:border-box}
+body{
+ margin:0;background:var(--bg);color:var(--text);
+ font:14px system-ui,Arial,sans-serif
+}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+header{
+ padding:22px 16px;
+ background:linear-gradient(110deg,#123b2a,#061611);
+ border-bottom:1px solid var(--line)
+}
+.brand{font:800 30px Georgia,serif;color:var(--gold)}
+.brand span{color:var(--green)}
+.slogan{color:var(--gold);font-size:11px;margin-top:9px}
+.sub{color:var(--muted);margin-top:12px}
+main{max-width:760px;margin:auto;padding:14px 14px 110px}
+.card{
+ background:var(--card);border:1px solid var(--line);
+ border-radius:16px;padding:16px;margin-bottom:14px
+}
+h2{color:var(--gold);font-size:19px;margin:0 0 14px}
+h3{color:var(--gold);font-size:15px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.tile{background:var(--card2);padding:13px;border-radius:11px}
+.value{font-size:20px;font-weight:800;color:var(--gold);overflow-wrap:anywhere}
+.muted{color:var(--muted);font-size:12px;line-height:1.6}
+label{display:block;color:var(--gold);margin:12px 0 5px}
+input,textarea,select{
+ width:100%;padding:12px;background:#071d16;color:white;
+ border:1px solid #417058;border-radius:9px
+}
+textarea{min-height:110px;resize:vertical}
+button.btn{
+ border:0;border-radius:10px;padding:12px;
+ background:var(--green);color:#042419;font-weight:800
+}
+button.alt{background:#22503b;color:white;border:1px solid #47775d}
+button.danger{background:#69373c;color:white}
+.buttons{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.buttons button{flex:1}
+.row{
+ display:flex;align-items:center;justify-content:space-between;
+ gap:10px;padding:11px 0;border-bottom:1px solid var(--line)
+}
+.row span{color:var(--gold);overflow-wrap:anywhere}
+.row small{color:var(--muted)}
+.nav{
+ position:fixed;bottom:0;left:0;right:0;
+ display:grid;grid-template-columns:repeat(5,1fr);
+ background:#09251b;border-top:1px solid var(--line);
+ padding:7px 3px calc(7px + env(safe-area-inset-bottom));
+ z-index:10
+}
+.nav button{
+ background:none;border:0;color:#c3d8c9;
+ padding:9px 2px;border-radius:10px;font-size:11px
+}
+.nav button.active{background:#20533c;color:var(--gold)}
+.nav b{display:block;font-size:20px;margin-bottom:4px}
+.tabs{display:flex;gap:7px;overflow-x:auto;padding-bottom:10px}
+.tabs button{
+ flex-shrink:0;background:#183b2d;color:white;
+ border:1px solid var(--line);padding:10px;border-radius:9px
+}
+.tabs button.active{color:var(--gold);border-color:var(--gold)}
+.green{color:var(--green)}
+.red{color:var(--red)}
+.notice{background:#42272b;border-radius:10px;padding:13px;color:#ffd1d1}
+pre{
+ white-space:pre-wrap;overflow-wrap:anywhere;
+ background:#071d16;border-radius:10px;padding:12px
+}
+.check{width:19px;height:19px;accent-color:var(--green)}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="brand">◈ ORACLE <span>LIFE</span></div>
+ <div class="slogan">ПОРЯДОК В НАСТОЯЩЕМ. ВЛАСТЬ НАД БУДУЩИМ.</div>
+ <div class="sub">MR. ARCANUM · Личный командный центр</div>
+</header>
+
+<main id="main">Загрузка ORACLE LIFE...</main>
+<nav class="nav" id="nav"></nav>
+<input id="backupFile" type="file" accept=".json" hidden>
+
+<script>
+"use strict";
+
+const KEY="oracle-life-v7";
+const OLD="oracle-life-v6-demo";
+
+const today=()=>{
+ const d=new Date();
+ return d.getFullYear()+"-"+
+ String(d.getMonth()+1).padStart(2,"0")+"-"+
+ String(d.getDate()).padStart(2,"0");
+};
+
+const defaults=()=>({
+ tab:"home",
+ more:"dev",
+ financeTab:"budget",
+ devTab:"import",
+ shift:"off",
+ life:20000,
+ bank:0,
+ limit:2000,
+ capital:10000,
+ expenses:[],
+ bankHistory:[],
+ tasks:[],
+ trades:[],
+ reports:[],
+ ideas:[],
+ notes:[],
+ raw:"",
+ draft:null,
+ energy:7,
+ sleep:8
+});
+
+let db;
+
+try{
+ const saved=localStorage.getItem(KEY);
+ const legacy=localStorage.getItem(OLD);
+ const data=JSON.parse(saved||legacy||"{}");
+ db={...defaults(),...data};
+}catch(e){
+ db=defaults();
+ console.error("Storage:",e);
+}
+
+for(const name of [
+ "expenses","bankHistory","tasks","trades",
+ "reports","ideas","notes"
+]){
+ if(!Array.isArray(db[name]))db[name]=[];
+}
+
+function save(){
+ try{
+  localStorage.setItem(KEY,JSON.stringify(db));
+ }catch(e){
+  console.error(e);
+  alert("Не удалось сохранить данные. Проверь память устройства.");
+ }
+}
+
+const money=n=>
+ Number(n||0).toLocaleString("ru-RU",{
+  minimumFractionDigits:2,
+  maximumFractionDigits:2
+ })+" ₽";
+
+const esc=x=>String(x??"").replace(/[&<>"']/g,c=>({
+ "&":"&amp;","<":"&lt;",">":"&gt;",
+ '"':"&quot;","'":"&#39;"
+}[c]));
+
+const el=id=>document.getElementById(id);
+
+const card=(title,body)=>
+ `<section class="card"><h2>${title}</h2>${body}</section>`;
+
+const tile=(name,value)=>
+ `<div class="tile"><div class="muted">${name}</div>
+ <div class="value">${value}</div></div>`;
+
+const btn=(text,action,style="")=>
+ `<button class="btn ${style}" data-action="${action}">${text}</button>`;
+
+const row=(a,b)=>
+ `<div class="row"><span>${esc(a)}</span><b>${b}</b></div>`;
+
+const totalExpenses=()=>db.expenses.reduce(
+ (s,x)=>s+Number(x.amount||0),0
+);
+
+const totalPnl=()=>db.trades.reduce(
+ (s,x)=>s+Number(x.pnl||0),0
+);
+
+function home(){
+ const remaining=db.tasks.filter(x=>!x.done).length;
+ const last=db.reports[0];
+
+ return card("🏛️ Командный центр",`
+ <div class="grid">
+ ${tile("Остаток бюджета",money(db.life-totalExpenses()))}
+ ${tile("Свободный банк",money(db.bank))}
+ ${tile("Задачи",remaining)}
+ ${tile("Торговый результат",money(totalPnl()))}
+ </div>
+ <p class="muted">ORACLE LIFE · Персональная панель управления</p>
+ <div class="buttons">
+ ${btn("📅 Планы","go-plans")}
+ ${btn("💻 DEV MEMORY","go-dev","alt")}
+ </div>
+ `)+card("☀️ DAILY BRIEFING",`
+ <p>Сегодня: ${new Date().toLocaleDateString("ru-RU")}</p>
+ <p>Невыполненных задач: <b>${remaining}</b></p>
+ <p>Энергия: <b>${db.energy}/10</b></p>
+ <p>Сон: <b>${db.sleep} ч</b></p>
+ <p>Торговых записей сегодня:
+ <b>${db.trades.filter(x=>x.date===today()).length}</b></p>
+ `)+card("💻 Последняя работа",
+ last?`
+ <b style="color:var(--gold)">${esc(last.project||"Без названия")}</b>
+ <p>${esc(last.stop||last.done||"Отчёт сохранён")}</p>
+ ${btn("📋 Скопировать","copy-last")}
+ `:"<p class='muted'>Отчётов пока нет.</p>");
+}
+
+function plans(){
+ const shifts=[
+ ["off","🏡 Выходной"],
+ ["day","☀️ День 08:00–20:00"],
+ ["night","🌙 Ночь 20:00–08:00"],
+ ["recovery","😴 Отсыпной"]
+ ];
+
+ return card("📅 Планирование",`
+ <label>Тип дня</label>
+ <select id="shift">
+ ${shifts.map(([v,t])=>
+ `<option value="${v}" ${db.shift===v?"selected":""}>${t}</option>`
+ ).join("")}
+ </select>
+ <label>Энергия: <b id="energyValue">${db.energy}</b>/10</label>
+ <input id="energy" type="range" min="1" max="10" value="${db.energy}">
+ <label>Сон, часов</label>
+ <input id="sleep" type="number" min="0" max="24" value="${db.sleep}">
+ <div class="buttons">${btn("Сохранить","save-wellbeing")}</div>
+ `)+card("＋ Новая задача",`
+ <form data-form="task">
+ <label>Название</label>
+ <input name="name" required>
+ <label>Продолжительность, минут</label>
+ <input name="duration" type="number" min="1" value="60" required>
+ <button class="btn" style="margin-top:12px">Добавить</button>
+ </form>
+ `)+card("📋 Мои задачи",`
+ ${db.tasks.length?db.tasks.map(t=>`
+ <div class="row">
+ <input class="check" type="checkbox"
+ data-task="${t.id}" ${t.done?"checked":""}>
+ <span style="flex:1;${t.done?"text-decoration:line-through":""}">
+ ${esc(t.name)} <small>${t.duration} мин</small>
+ </span>
+ ${btn("✕","delete-task-"+t.id,"danger")}
+ </div>
+ `).join(""):"<p class='muted'>Пока нет задач.</p>"}
+ <div class="buttons">
+ ${btn("🚨 Сегодня не по плану","replan","alt")}
+ </div>
+ `);
+}
+
+function finance(){
+ const tabs=[
+ ["budget","💳 Бюджет"],
+ ["bank","🏦 Банк"],
+ ["history","📜 История"]
+ ];
+
+ let html=`<div class="tabs">${
+ tabs.map(([id,name])=>
+ `<button data-finance="${id}" class="${db.financeTab===id?"active":""}">${name}</button>`
+ ).join("")
+ }</div>`;
+
+ if(db.financeTab==="bank"){
+  return html+card("🏦 Свободный банк",`
+  ${tile("Баланс",money(db.bank))}
+  <form data-form="bank">
+  <label>Сумма, ₽</label>
+  <input name="amount" type="number" min="0.01" step="0.01" required>
+  <div class="buttons">
+  <button class="btn" name="operation" value="add">Пополнить</button>
+  <button class="btn alt" name="operation" value="take">Снять</button>
+  </div>
+  </form>
+  <p class="muted">Переводы внутри бюджета не являются доходом.</p>
+  `)+card("История банка",
+  db.bankHistory.slice().reverse().map(x=>
+  row(x.note,money(x.amount))
+  ).join("")||"История пуста");
+ }
+
+ if(db.financeTab==="history"){
+  return html+card("📜 Расходы",
+  db.expenses.slice().reverse().map(x=>
+  row(x.name,"−"+money(x.amount))
+  ).join("")||"Расходов пока нет");
+ }
+
+ const spent=totalExpenses();
+ const todaySpent=db.expenses.filter(
+ x=>x.date===today()
+ ).reduce((a,x)=>a+Number(x.amount),0);
+
+ return html+card("💰 Деньги на жизнь",`
+ <form data-form="budget">
+ <label>Выделено на жизнь, ₽</label>
+ <input name="life" type="number" min="0" value="${db.life}" required>
+ <label>Дневной лимит, ₽</label>
+ <input name="limit" type="number" min="0" value="${db.limit}" required>
+ <button class="btn" style="margin-top:12px">Сохранить</button>
+ </form>
+ <div class="grid" style="margin-top:12px">
+ ${tile("Осталось",money(db.life-spent))}
+ ${tile("Потрачено",money(spent))}
+ </div>
+ `)+card("💳 Мой бюджет",`
+ <div class="grid">
+ ${tile("Лимит сегодня",money(db.limit))}
+ ${tile("Сегодня потрачено",money(todaySpent))}
+ </div>
+ `)+card("📅 Финансовый календарь",calendar())+
+ card("＋ Записать расход",`
+ <form data-form="expense">
+ <label>Название</label>
+ <input name="name" required>
+ <label>Сумма, ₽</label>
+ <input name="amount" type="number" min="0.01" step="0.01" required>
+ <button class="btn" style="margin-top:12px">Сохранить расход</button>
+ </form>
+ `)+card("Последние расходы",
+ db.expenses.slice(-10).reverse().map(x=>
+ row(x.name,"−"+money(x.amount))
+ ).join("")||"Пока нет расходов");
+}
+
+function calendar(){
+ const d=new Date();
+ const year=d.getFullYear();
+ const month=d.getMonth();
+ const days=new Date(year,month+1,0).getDate();
+ const offset=(new Date(year,month,1).getDay()+6)%7;
+
+ let cells=["Пн","Вт","Ср","Чт","Пт","Сб","Вс"].map(
+ x=>`<div class="muted">${x}</div>`
+ );
+
+ for(let i=0;i<offset;i++)cells.push("<div></div>");
+
+ for(let day=1;day<=days;day++){
+  const date=year+"-"+String(month+1).padStart(2,"0")+"-"+
+  String(day).padStart(2,"0");
+  const sum=db.expenses.filter(x=>x.date===date)
+  .reduce((a,x)=>a+Number(x.amount),0);
+
+  cells.push(`<div class="tile" style="padding:6px;text-align:center">
+  ${day}<div class="muted">${sum?Math.round(sum)+" ₽":"·"}</div>
+  </div>`);
+ }
+
+ return `<div class="grid" style="grid-template-columns:repeat(7,minmax(0,1fr));gap:3px">
+ ${cells.join("")}</div>`;
+}
+
+function trade(){
+ const todayTrades=db.trades.filter(x=>x.date===today());
+ const wins=todayTrades.filter(x=>x.result==="win").length;
+ const losses=todayTrades.filter(x=>x.result==="loss").length;
+ let streak=0;
+
+ for(let i=todayTrades.length-1;i>=0;i--){
+  if(todayTrades[i].result==="loss")streak++;
+  else break;
+ }
+
+ const stop=todayTrades.length>=5||streak>=2;
+
+ return card("📈 ORACLE TRADE",`
+ <div class="grid">
+ ${tile("Капитал",money(db.capital+totalPnl()))}
+ ${tile("Результат",money(totalPnl()))}
+ ${tile("Сделок сегодня",todayTrades.length+" / 5")}
+ ${tile("WIN / LOSS",wins+" / "+losses)}
+ </div>
+ <label>Начальный капитал, ₽</label>
+ <input id="capital" type="number" min="0" value="${db.capital}">
+ <div class="buttons">${btn("Сохранить капитал","save-capital")}</div>
+ ${stop?`<div class="notice" style="margin-top:12px">
+ ⚠️ Достигнут лимит торговой дисциплины.
+ </div>`:""}
+ <p class="muted">Правила: риск 1%, максимум 5 сделок,
+ стоп после двух убытков подряд.</p>
+ `)+card("＋ Записать сделку",`
+ <form data-form="trade">
+ <label>Актив</label>
+ <select name="asset">
+ <option>EUR/USD</option>
+ <option>GBP/USD</option>
+ <option>USD/JPY</option>
+ <option>BTC/USDT</option>
+ </select>
+ <label>Направление</label>
+ <select name="direction">
+ <option>CALL</option><option>PUT</option>
+ </select>
+ <label>Таймфрейм</label>
+ <select name="tf">
+ <option>M1</option><option>M5</option>
+ <option>M15</option><option>H1</option>
+ </select>
+ <label>Ставка, ₽</label>
+ <input name="stake" type="number" min="0.01" step="0.01" value="100" required>
+ <label>Выплата, %</label>
+ <input name="payout" type="number" min="0" max="100" value="85" required>
+ <div class="buttons">
+ <button class="btn" name="result" value="win">✓ WIN</button>
+ <button class="btn danger" name="result" value="loss">✕ LOSS</button>
+ </div>
+ </form>
+ `)+card("📜 История сделок",
+ db.trades.slice().reverse().map(x=>
+ row(x.asset+" · "+x.tf+" · "+x.direction,
+ `<span class="${x.pnl>=0?"green":"red"}">${money(x.pnl)}</span>`)
+ ).join("")||"Сделок пока нет");
+}
+
+const HEADINGS={
+ "ПРОЕКТ":"project",
+ "ПОМОЩНИК":"agent",
+ "ДАТА":"date",
+ "СДЕЛАНО":"done",
+ "ГДЕ ОСТАНОВИЛИСЬ":"stop",
+ "ПРОБЛЕМЫ":"issues",
+ "СЛЕДУЮЩИЕ ЗАДАЧИ":"next",
+ "ИЗМЕНЁННЫЕ ФАЙЛЫ":"files",
+ "GIT":"git",
+ "ИСТОРИЯ СДЕЛОК":"trades",
+ "ИТОГИ ТОРГОВОГО ДНЯ":"summary",
+ "ИТОГ":"conclusion"
+};
+
+function parseReport(raw){
+ const result={};
+ let section="";
+
+ for(const line of raw.split(/\r?\n/)){
+  const match=line.match(/^([^:]{2,60}):\s*(.*)$/);
+  const heading=match?.[1]?.trim().toUpperCase();
+
+  if(heading&&HEADINGS[heading]){
+   section=HEADINGS[heading];
+   result[section]=match[2]||"";
+  }else if(section){
+   result[section]+="\n"+line;
+  }
+ }
+
+ return result;
+}
+
+function reportText(r){
+ return [
+ "ORACLE LIFE · ПЕРЕДАЧА СЕССИИ",
+ "ПРОЕКТ: "+(r.project||"Не указано"),
+ "ПОМОЩНИК: "+(r.agent||"Не указано"),
+ "ДАТА: "+(r.date||"Не указано"),
+ "",
+ "СДЕЛАНО:\n"+(r.done||"Не указано"),
+ "ГДЕ ОСТАНОВИЛИСЬ:\n"+(r.stop||"Не указано"),
+ "ПРОБЛЕМЫ:\n"+(r.issues||"Не указано"),
+ "СЛЕДУЮЩИЕ ЗАДАЧИ:\n"+(r.next||"Не указано"),
+ "ИЗМЕНЁННЫЕ ФАЙЛЫ:\n"+(r.files||"Не указано"),
+ "GIT:\n"+(r.git||"Не указано"),
+ "",
+ "ПОЛНЫЙ ОТЧЁТ:\n"+(r.source||"")
+ ].join("\n\n");
+}
+
+function dev(){
+ const tabs=[
+ ["import","📥 Импорт"],
+ ["fields","📝 Разбор"],
+ ["latest","📌 Последняя"],
+ ["archive","🗂️ Архив"]
+ ];
+
+ let html=`<div class="tabs">${
+ tabs.map(([id,name])=>
+ `<button data-dev="${id}" class="${db.devTab===id?"active":""}">
+ ${name}</button>`).join("")
+ }</div>`;
+
+ if(db.devTab==="import"){
+  return html+card("💻 DEV MEMORY · Импорт",`
+  <p class="muted">Вставь отчёт Codex, OpenCode
+  или отчёт торгового дня.</p>
+  <textarea id="rawReport" placeholder="Вставь полный отчёт...">${esc(db.raw)}</textarea>
+  <div class="buttons">
+  ${btn("🔍 Разобрать","parse")}
+  ${btn("🧹 Очистить поле","clear-raw","alt")}
+  </div>
+  `);
+ }
+
+ if(db.devTab==="fields"){
+  const r=db.draft||{};
+  const fields=[
+   ["project","Проект"],
+   ["agent","Помощник"],
+   ["date","Дата"],
+   ["done","Сделано"],
+   ["stop","Где остановились"],
+   ["issues","Проблемы"],
+   ["next","Следующие задачи"],
+   ["files","Изменённые файлы"],
+   ["git","Git"],
+   ["trades","История сделок"],
+   ["summary","Итоги торгового дня"]
+  ];
+
+  return html+card("📝 Проверь поля",`
+  <form data-form="report">
+  ${fields.map(([id,name])=>`
+  <label>${name}</label>
+  <textarea name="${id}" rows="2">${esc(r[id]||"")}</textarea>
+  `).join("")}
+  <button class="btn" style="margin-top:12px">💾 Сохранить отчёт</button>
+  </form>
+  <div class="buttons">${btn("Сбросить разбор","clear-draft","alt")}</div>
+  `);
+ }
+
+ if(db.devTab==="latest"){
+  const r=db.reports[0];
+  return html+card("📌 Последняя работа",
+  r?`
+  <h3>${esc(r.project||"Без названия")}</h3>
+  <p class="muted">${esc(r.date||"Дата не указана")}</p>
+  ${["done","stop","issues","next"].map(k=>`
+  <div class="tile" style="margin-bottom:8px">
+  <b>${({done:"Сделано",stop:"Остановились",
+  issues:"Проблемы",next:"Дальше"})[k]}</b>
+  <pre>${esc(r[k]||"Не указано")}</pre>
+  </div>`).join("")}
+  <div class="buttons">
+  ${btn("📋 Скопировать","copy-last")}
+  ${btn("🗑️ Удалить","delete-last","danger")}
+  </div>
+  <details><summary>Оригинальный отчёт</summary>
+  <pre>${esc(r.source||"Не указан")}</pre></details>
+  `:"<p>Нет сохранённых отчётов.</p>");
+ }
+
+ return html+card("🗂️ Архив",db.reports.length?
+ db.reports.map((r,i)=>`
+ <div class="tile" style="margin-bottom:10px">
+ <b style="color:var(--gold)">${esc(r.project||"Без названия")}</b>
+ <p class="muted">${esc(r.date||"")}</p>
+ <div class="buttons">
+ ${btn("Открыть","open-report-"+i,"alt")}
+ ${btn("Удалить","delete-report-"+i,"danger")}
+ </div>
+ </div>
+ `).join(""):"Архив пуст");
+}
+
+function more(){
+ const sections=[
+ ["dev","💻 DEV"],
+ ["ideas","💡 Идеи"],
+ ["notes","📔 Дневник"],
+ ["settings","⚙️ Настройки"]
+ ];
+
+ let html=`<div class="tabs">${
+ sections.map(([id,name])=>
+ `<button data-more="${id}" class="${db.more===id?"active":""}">${name}</button>`
+ ).join("")
+ }</div>`;
+
+ if(db.more==="dev")return html+dev();
+
+ if(db.more==="ideas"){
+  return html+card("💡 ORACLE INBOX",`
+  <form data-form="idea">
+  <textarea name="text" placeholder="Новая идея..." required></textarea>
+  <button class="btn">Сохранить идею</button>
+  </form>
+  `)+card("Мои идеи",
+  db.ideas.map(x=>row(x,"")).join("")||"Идей пока нет");
+ }
+
+ if(db.more==="notes"){
+  return html+card("📔 Дневник",`
+  <form data-form="note">
+  <textarea name="text" placeholder="Что произошло сегодня?" required></textarea>
+  <button class="btn">Сохранить</button>
+  </form>
+  `)+card("Записи",
+  db.notes.slice().reverse().map(x=>
+  row(x.date,esc(x.text))
+  ).join("")||"Записей пока нет");
+ }
+
+ return html+card("⚙️ Данные и резервные копии",`
+ <p class="muted">Все данные хранятся локально
+ в браузере этого устройства.</p>
+ <div class="buttons">
+ ${btn("📤 Экспорт","export")}
+ ${btn("📥 Импорт","import","alt")}
+ </div>
+ <div class="buttons">
+ ${btn("🗑️ Сбросить данные","reset","danger")}
+ </div>
+ <p class="muted">Перед очисткой Telegram или браузера
+ обязательно сохрани резервную копию.</p>
+ `);
+}
+
+function render(){
+ const pages={
+  home,plans,finance,trade,more
+ };
+
+ if(!pages[db.tab])db.tab="home";
+
+ el("nav").innerHTML=[
+  ["home","🏛️","Главная"],
+  ["plans","📅","Планы"],
+  ["finance","💳","Финансы"],
+  ["trade","📈","Трейдинг"],
+  ["more","⚙️","Ещё"]
+ ].map(([id,icon,name])=>`
+ <button data-tab="${id}" class="${db.tab===id?"active":""}">
+ <b>${icon}</b>${name}</button>
+ `).join("");
+
+ try{
+  el("main").innerHTML=pages[db.tab]();
+ }catch(e){
+  console.error(e);
+  el("main").textContent="Ошибка отображения: "+e.message;
+ }
+ save();
+}
+
+function copy(text){
+ if(navigator.clipboard&&window.isSecureContext){
+  navigator.clipboard.writeText(text).then(
+   ()=>alert("Скопировано!"),
+   ()=>fallbackCopy(text)
+  );
+ }else fallbackCopy(text);
+}
+
+function fallbackCopy(text){
+ const area=document.createElement("textarea");
+ area.value=text;
+ document.body.appendChild(area);
+ area.select();
+ const ok=document.execCommand("copy");
+ area.remove();
+ if(ok)alert("Скопировано!");
+ else prompt("Скопируй текст:",text);
+}
+
+document.addEventListener("click",e=>{
+ const b=e.target.closest(
+  "[data-tab],[data-more],[data-finance],[data-dev],[data-action]"
+ );
+ if(!b)return;
+
+ if(b.dataset.tab){
+  db.tab=b.dataset.tab;
+  render();return;
+ }
+ if(b.dataset.more){
+  db.more=b.dataset.more;
+  render();return;
+ }
+ if(b.dataset.finance){
+  db.financeTab=b.dataset.finance;
+  render();return;
+ }
+ if(b.dataset.dev){
+  db.devTab=b.dataset.dev;
+  render();return;
+ }
+
+ const a=b.dataset.action;
+ if(!a)return;
+
+ if(a.startsWith("go-")){
+  const dest=a.slice(3);
+  db.tab=dest==="dev"?"more":dest;
+  if(dest==="dev")db.more="dev";
+  render();return;
+ }
+
+ if(a==="save-wellbeing"){
+  db.energy=Number(el("energy").value);
+  db.sleep=Number(el("sleep").value);
+ }
+
+ if(a==="save-capital"){
+  db.capital=Number(el("capital").value);
+ }
+
+ if(a==="replan"){
+  if(confirm("Перенести невыполненные дела на потом?")){
+   db.tasks.forEach(t=>{
+    if(!t.done)t.deferred=true;
+   });
+  }
+ }
+
+ if(a.startsWith("delete-task-")){
+  const id=a.slice(12);
+  if(confirm("Удалить задачу?"))
+   db.tasks=db.tasks.filter(t=>String(t.id)!==id);
+ }
+
+ if(a==="clear-raw"){
+  db.raw="";
+ }
+
+ if(a==="parse"){
+  db.raw=el("rawReport").value;
+  if(!db.raw.trim()){
+   alert("Вставь отчёт.");return;
+  }
+  db.draft=parseReport(db.raw);
+  db.devTab="fields";
+ }
+
+ if(a==="clear-draft"){
+  db.draft=null;
+  db.devTab="import";
+ }
+
+ if(a==="copy-last"){
+  if(db.reports[0])copy(reportText(db.reports[0]));
+ }
+
+ if(a==="delete-last"){
+  if(confirm("Удалить последнюю сессию?"))
+   db.reports.shift();
+ }
+
+ if(a.startsWith("open-report-")){
+  const i=Number(a.slice(12));
+  const r=db.reports[i];
+  if(r){
+   db.reports.splice(i,1);
+   db.reports.unshift(r);
+   db.devTab="latest";
+  }
+ }
+
+ if(a.startsWith("delete-report-")){
+  const i=Number(a.slice(14));
+  if(confirm("Удалить отчёт?"))
+   db.reports.splice(i,1);
+ }
+
+ if(a==="export"){
+  const blob=new Blob(
+   [JSON.stringify({app:"ORACLE LIFE",version:7,data:db},null,2)],
+   {type:"application/json"}
+  );
+  const url=URL.createObjectURL(blob);
+  const link=document.createElement("a");
+  link.href=url;
+  link.download="oracle-life-backup-"+today()+".json";
+  link.click();
+  setTimeout(()=>URL.revokeObjectURL(url),3000);
+ }
+
+ if(a==="import")el("backupFile").click();
+
+ if(a==="reset"){
+  if(confirm("Удалить все данные ORACLE LIFE?")){
+   db=defaults();
+  }
+ }
+
+ render();
+});
+
+document.addEventListener("change",e=>{
+ if(e.target.id==="shift"){
+  db.shift=e.target.value;
+  save();
+ }
+ if(e.target.dataset.task){
+  const t=db.tasks.find(x=>String(x.id)===e.target.dataset.task);
+  if(t)t.done=e.target.checked;
+  save();
+ }
+});
+
+document.addEventListener("input",e=>{
+ if(e.target.id==="rawReport"){
+  db.raw=e.target.value;
+  save();
+ }
+});
+
+document.addEventListener("submit",e=>{
+ const form=e.target.closest("form[data-form]");
+ if(!form)return;
+ e.preventDefault();
+
+ const data=Object.fromEntries(new FormData(form));
+ const type=form.dataset.form;
+
+ if(type==="task"){
+  db.tasks.push({
+   id:Date.now(),
+   name:data.name.trim(),
+   duration:Number(data.duration),
+   done:false,
+   deferred:false
+  });
+ }
+
+ if(type==="budget"){
+  db.life=Number(data.life);
+  db.limit=Number(data.limit);
+ }
+
+ if(type==="expense"){
+  db.expenses.push({
+   id:Date.now(),
+   name:data.name.trim(),
+   amount:Number(data.amount),
+   date:today()
+  });
+ }
+
+ if(type==="bank"){
+  const amount=Number(data.amount);
+  const take=e.submitter?.value==="take";
+  if(take&&amount>db.bank){
+   alert("Недостаточно средств.");return;
+  }
+  db.bank+=take?-amount:amount;
+  db.bankHistory.push({
+   amount:take?-amount:amount,
+   note:take?"Снятие":"Пополнение",
+   date:today()
+  });
+ }
+
+ if(type==="trade"){
+  const stake=Number(data.stake);
+  const payout=Number(data.payout);
+  const result=e.submitter?.value==="loss"?"loss":"win";
+  const current=db.capital+totalPnl();
+  const todayTrades=db.trades.filter(x=>x.date===today());
+
+  let streak=0;
+  for(let i=todayTrades.length-1;i>=0;i--){
+   if(todayTrades[i].result==="loss")streak++;
+   else break;
+  }
+
+  if(stake>current*0.01){
+   if(!confirm("Ставка превышает риск 1%. Всё равно записать?"))
+    return;
+  }
+
+  if(todayTrades.length>=5||streak>=2){
+   if(!confirm("Нарушение торгового лимита. Записать сделку?"))
+    return;
+  }
+
+  const pnl=result==="win"?
+   Math.round(stake*payout)/100:
+   -stake;
+
+  db.trades.push({
+   id:Date.now(),
+   asset:data.asset,
+   direction:data.direction,
+   tf:data.tf,
+   stake,payout,result,pnl,
+   date:today()
+  });
+ }
+
+ if(type==="report"){
+  db.reports.unshift({
+   ...data,
+   id:Date.now(),
+   source:db.raw,
+   date:data.date||today()
+  });
+  db.devTab="latest";
+ }
+
+ if(type==="idea"){
+  db.ideas.push(data.text.trim());
+ }
+
+ if(type==="note"){
+  db.notes.push({date:today(),text:data.text.trim()});
+ }
+
+ render();
+});
+
+el("backupFile").addEventListener("change",async e=>{
+ const file=e.target.files?.[0];
+ if(!file)return;
+
+ try{
+  const obj=JSON.parse(await file.text());
+  if(obj.app!=="ORACLE LIFE"||!obj.data)
+   throw new Error("Неверный формат");
+
+  if(confirm("Заменить текущие данные резервной копией?")){
+   db={...defaults(),...obj.data};
+   render();
+  }
+ }catch(error){
+  alert("Ошибка импорта: "+error.message);
+ }
+ e.target.value="";
+});
+
+window.addEventListener("error",e=>{
+ console.error("ORACLE LIFE:",e.error||e.message);
+});
+
+render();
+</script>
+</body>
+</html>
