@@ -5,33 +5,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#071b14">
-<title>ORACLE LIFE 7.1</title>
+<title>ORACLE LIFE 7.2</title>
 <style>
-:root{
- --bg:#061610;--card:#102c22;--card2:#183d2e;
- --gold:#eac77e;--green:#25d99c;--text:#edf5ee;
- --muted:#b1c8b8;--line:#345c49;--red:#ffaaaa
-}
+:root{--bg:#061610;--card:#102c22;--card2:#183d2e;--gold:#eac77e;--green:#25d99c;--text:#edf5ee;--muted:#b1c8b8;--line:#345c49;--red:#ffaaaa}
 *{box-sizing:border-box}
-body{
- margin:0;background:var(--bg);color:var(--text);
- font:14px system-ui,Arial,sans-serif
-}
+body{margin:0;background:var(--bg);color:var(--text);font:14px system-ui,Arial,sans-serif}
 button,input,textarea,select{font:inherit}
 button{cursor:pointer}
-header{
- padding:22px 17px;background:linear-gradient(120deg,#123d2b,#071b14);
- border-bottom:1px solid var(--line)
-}
+header{padding:22px 17px;background:linear-gradient(120deg,#123d2b,#071b14);border-bottom:1px solid var(--line)}
 .brand{font:bold 30px Georgia,serif;color:var(--gold)}
 .brand span{color:var(--green)}
 .slogan{font-size:11px;color:var(--gold);margin-top:9px}
 .sub{color:var(--muted);margin-top:12px}
 main{max-width:760px;margin:auto;padding:15px 14px 110px}
-.card{
- background:var(--card);border:1px solid var(--line);
- border-radius:17px;padding:16px;margin-bottom:15px
-}
+.card{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:16px;margin-bottom:15px}
 h2{color:var(--gold);font-size:20px;margin:0 0 14px}
 h3{color:var(--gold);font-size:16px}
 p{line-height:1.55}
@@ -40,63 +27,31 @@ p{line-height:1.55}
 .tile{background:var(--card2);padding:12px;border-radius:11px;min-width:0}
 .value{color:var(--gold);font-size:19px;font-weight:800;overflow-wrap:anywhere}
 label{display:block;color:var(--gold);margin:12px 0 5px}
-input,textarea,select{
- width:100%;background:#071d16;color:white;
- border:1px solid #47705a;border-radius:9px;
- padding:12px;outline:none
-}
-input:focus,textarea:focus{border-color:var(--green)}
+input,textarea,select{width:100%;background:#071d16;color:white;border:1px solid #47705a;border-radius:9px;padding:12px;outline:none}
+input:focus,textarea:focus,select:focus{border-color:var(--green)}
 textarea{min-height:110px;resize:vertical}
-button.btn{
- background:var(--green);color:#06261b;border:0;
- padding:12px;border-radius:10px;font-weight:800
-}
+button.btn{background:var(--green);color:#06261b;border:0;padding:12px;border-radius:10px;font-weight:800}
 button.alt{background:#24503c;color:white}
 button.danger{background:#74383e;color:white}
 .buttons{display:flex;flex-wrap:wrap;gap:8px;margin-top:13px}
 .buttons button{flex:1;min-width:110px}
-.row{
- display:flex;justify-content:space-between;align-items:center;
- gap:9px;border-bottom:1px solid var(--line);padding:11px 0
-}
+.row{display:flex;justify-content:space-between;align-items:center;gap:9px;border-bottom:1px solid var(--line);padding:11px 0}
 .row span{color:var(--gold);overflow-wrap:anywhere}
 .row small{color:var(--muted)}
-.nav{
- position:fixed;bottom:0;left:0;right:0;
- display:grid;grid-template-columns:repeat(5,1fr);
- background:#09251b;border-top:1px solid var(--line);
- padding:7px 3px calc(7px + env(safe-area-inset-bottom));z-index:10
-}
-.nav button{
- background:none;border:0;color:#d0e0d4;
- font-size:11px;padding:8px 2px;border-radius:10px
-}
+.nav{position:fixed;bottom:0;left:0;right:0;display:grid;grid-template-columns:repeat(5,1fr);background:#09251b;border-top:1px solid var(--line);padding:7px 3px calc(7px + env(safe-area-inset-bottom));z-index:10}
+.nav button{background:none;border:0;color:#d0e0d4;font-size:11px;padding:8px 2px;border-radius:10px}
 .nav button.active{background:#20513d;color:var(--gold)}
 .nav b{display:block;font-size:20px;margin-bottom:4px}
 .tabs{display:flex;gap:7px;overflow-x:auto;padding-bottom:11px}
-.tabs button{
- flex-shrink:0;background:#1a3c2d;color:white;
- border:1px solid var(--line);padding:10px;border-radius:9px
-}
+.tabs button{flex-shrink:0;background:#1a3c2d;color:white;border:1px solid var(--line);padding:10px;border-radius:9px}
 .tabs button.active{color:var(--gold);border-color:var(--gold)}
 .green{color:var(--green)}
 .red{color:var(--red)}
-.notice{
- padding:12px;background:#42282b;border-radius:10px;
- color:#ffd1d1;margin:10px 0
-}
-pre{
- white-space:pre-wrap;overflow-wrap:anywhere;
- background:#071d16;padding:12px;border-radius:9px
-}
+.notice{padding:12px;background:#42282b;border-radius:10px;color:#ffd1d1;margin:10px 0}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#071d16;padding:12px;border-radius:9px}
 .check{width:20px;height:20px;accent-color:var(--green)}
-.calendar{
- display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px
-}
-.day{
- text-align:center;background:var(--card2);
- border-radius:8px;padding:8px 2px;min-width:0
-}
+.calendar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px}
+.day{text-align:center;background:var(--card2);border-radius:8px;padding:8px 2px;min-width:0}
 .day small{display:block;font-size:9px;color:var(--muted)}
 details{margin-top:12px}
 summary{color:var(--gold);cursor:pointer}
@@ -104,58 +59,64 @@ summary{color:var(--gold);cursor:pointer}
 </head>
 <body>
 <header>
- <div class="brand">◈ ORACLE <span>LIFE</span></div>
- <div class="slogan">ПОРЯДОК В НАСТОЯЩЕМ. ВЛАСТЬ НАД БУДУЩИМ.</div>
- <div class="sub">MR. ARCANUM · Личный командный центр · 7.1</div>
+<div class="brand">◈ ORACLE <span>LIFE</span></div>
+<div class="slogan">ПОРЯДОК В НАСТОЯЩЕМ. ВЛАСТЬ НАД БУДУЩИМ.</div>
+<div class="sub">MR. ARCANUM · Личный командный центр · 7.2</div>
 </header>
 <main id="main">Загрузка...</main>
 <nav class="nav" id="nav"></nav>
 <input type="file" id="backupFile" accept=".json" hidden>
-
 <script>
 "use strict";
 
 const KEY="oracle-life-v71-clean";
+const $=id=>document.getElementById(id);
+const cents=n=>Math.round(Number(n||0)*100);
+const rub=n=>n/100;
+const round=n=>rub(cents(n));
+const money=n=>Number(n||0).toLocaleString("ru-RU",{minimumFractionDigits:2,maximumFractionDigits:2})+" ₽";
+const esc=x=>String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const uid=()=>Date.now()+"-"+Math.random().toString(36).slice(2,9);
 
 function dateNow(){
  const d=new Date();
- return d.getFullYear()+"-"+
- String(d.getMonth()+1).padStart(2,"0")+"-"+
- String(d.getDate()).padStart(2,"0");
+ return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
 }
-
+function dayNumber(s){
+ return Math.floor(Date.parse(s+"T12:00:00Z")/86400000);
+}
+function dayString(n){
+ return new Date(n*86400000).toISOString().slice(0,10);
+}
+function previousDay(s){return dayString(dayNumber(s)-1)}
+function validDate(s){
+ return /^\d{4}-\d{2}-\d{2}$/.test(s||"") &&
+ !Number.isNaN(Date.parse(s+"T12:00:00Z")) &&
+ dayString(dayNumber(s))===s;
+}
 function defaults(){
  return {
-  tab:"home",more:"dev",financeTab:"budget",
-  devTab:"import",shift:"off",
-  salary:0,life:0,savings:0,bank:0,
-  dailyLimit:0,capital:10000,
-  salaryHistory:[],expenses:[],bankHistory:[],
-  tasks:[],trades:[],reports:[],
-  ideas:[],notes:[],
-  raw:"",draft:null,energy:7,sleep:8
+  tab:"home",more:"dev",financeTab:"budget",devTab:"import",
+  shift:"off",salary:0,life:0,savings:0,bank:0,
+  dailyLimit:0,limitMode:"auto",nextPayday:"",
+  periodStart:"",periodId:"",lastClosedDay:"",
+  capital:10000,salaryHistory:[],expenses:[],bankHistory:[],
+  tasks:[],trades:[],reports:[],ideas:[],notes:[],
+  raw:"",draft:null,energy:7,sleep:8,
+  reservedBills:0
  };
 }
-
 let db;
-
 try{
- const stored=JSON.parse(localStorage.getItem(KEY)||"{}");
- db={...defaults(),...stored};
+ db={...defaults(),...JSON.parse(localStorage.getItem(KEY)||"{}")};
 }catch(e){
- db=defaults();
  console.error(e);
+ db=defaults();
 }
-
-const arrays=[
- "salaryHistory","expenses","bankHistory",
- "tasks","trades","reports","ideas","notes"
-];
-
+const arrays=["salaryHistory","expenses","bankHistory","tasks","trades","reports","ideas","notes"];
 for(const name of arrays){
  if(!Array.isArray(db[name]))db[name]=[];
 }
-
 function save(){
  try{
   localStorage.setItem(KEY,JSON.stringify(db));
@@ -166,64 +127,126 @@ function save(){
   return false;
  }
 }
-
-const $=id=>document.getElementById(id);
-
-function esc(x){
- return String(x??"").replace(/[&<>"']/g,c=>({
-  "&":"&amp;","<":"&lt;",">":"&gt;",
-  '"':"&quot;","'":"&#39;"
- })[c]);
+function card(title,body){return `<section class="card"><h2>${title}</h2>${body}</section>`}
+function tile(name,value){return `<div class="tile"><div class="muted">${name}</div><div class="value">${value}</div></div>`}
+function btn(name,action,style=""){return `<button type="button" class="btn ${style}" data-action="${action}">${name}</button>`}
+function row(name,value){return `<div class="row"><span>${esc(name)}</span><b>${value}</b></div>`}
+function tabs(items,current,attribute){
+ return `<div class="tabs">${items.map(([id,name])=>`<button type="button" data-${attribute}="${id}" class="${current===id?"active":""}">${name}</button>`).join("")}</div>`;
 }
 
-function money(n){
- return Number(n||0).toLocaleString("ru-RU",{
-  minimumFractionDigits:2,maximumFractionDigits:2
- })+" ₽";
-}
+/* ФИНАНСОВОЕ ЯДРО */
 
-function round(n){
- return Math.round((Number(n)+Number.EPSILON)*100)/100;
+function periodExpenses(){
+ return db.expenses.filter(x=>!db.periodStart ||
+  (x.date>=db.periodStart && (!validDate(db.nextPayday)||x.date<db.nextPayday)));
 }
-
-function card(title,body){
- return `<section class="card"><h2>${title}</h2>${body}</section>`;
+function periodTransfers(){
+ return db.bankHistory.filter(x=>x.type==="AUTO_SAVINGS"&&x.periodId===db.periodId);
 }
-
-function tile(name,value){
- return `<div class="tile"><div class="muted">${name}</div>
- <div class="value">${value}</div></div>`;
+function spentCents(before){
+ return periodExpenses().filter(x=>!before||x.date<=before)
+  .reduce((n,x)=>n+cents(x.amount),0);
 }
-
-function btn(name,action,style=""){
- return `<button type="button" class="btn ${style}"
- data-action="${action}">${name}</button>`;
+function transferredCents(before){
+ return periodTransfers().filter(x=>!before||x.date<=before)
+  .reduce((n,x)=>n+cents(x.amount),0);
 }
-
-function row(name,value){
- return `<div class="row"><span>${esc(name)}</span><b>${value}</b></div>`;
-}
-
-function sumExpenses(){
- return round(db.expenses.reduce((s,x)=>s+Number(x.amount||0),0));
-}
-
-function pnl(){
- return round(db.trades.reduce((s,x)=>s+Number(x.pnl||0),0));
-}
-
+function sumExpenses(){return rub(spentCents())}
+function pnl(){return round(db.trades.reduce((s,x)=>s+Number(x.pnl||0),0))}
 function available(){
- return round(db.life-sumExpenses());
+ return rub(cents(db.life)-spentCents()-transferredCents()-cents(db.reservedBills));
+}
+function unallocated(){
+ return rub(cents(db.salary)-cents(db.life)-cents(db.savings)-cents(db.bank));
+}
+function financePlan(){
+ const today=dateNow();
+ const valid=validDate(db.nextPayday)&&db.nextPayday>today;
+ const days=valid?dayNumber(db.nextPayday)-dayNumber(today):0;
+ const todaySpent=periodExpenses().filter(x=>x.date===today)
+  .reduce((n,x)=>n+cents(x.amount),0);
+ const balance=cents(db.life)-spentCents()-transferredCents()-cents(db.reservedBills);
+ const beforeToday=balance+todaySpent;
+ const limit=valid?(db.limitMode==="manual"?
+  Math.max(0,cents(db.dailyLimit)):
+  Math.max(0,Math.floor(beforeToday/days))):0;
+ return {
+  valid,days,limit,todaySpent,balance,
+  left:Math.max(0,Math.min(balance,limit-todaySpent)),
+  over:Math.max(0,todaySpent-limit)
+ };
+}
+function migrateFinance(){
+ if(!db.periodStart){
+  db.periodStart=dateNow();
+  db.lastClosedDay=previousDay(dateNow());
+ }
+ if(!db.periodId)db.periodId="legacy:"+db.periodStart;
+ if(!validDate(db.lastClosedDay))db.lastClosedDay=previousDay(dateNow());
+ if(!["auto","manual"].includes(db.limitMode))db.limitMode="auto";
+ if(!Number.isFinite(Number(db.reservedBills))||db.reservedBills<0)db.reservedBills=0;
+}
+function closeFinanceDays(){
+ if(!validDate(db.periodStart)||!validDate(db.nextPayday)||
+ db.nextPayday<=db.periodStart)return;
+
+ const today=dateNow();
+ const first=Math.max(dayNumber(db.periodStart),dayNumber(db.lastClosedDay)+1);
+ const end=Math.min(dayNumber(today)-1,dayNumber(db.nextPayday)-1);
+ if(first>end||end-first>3700)return;
+
+ for(let n=first;n<=end;n++){
+  const day=dayString(n);
+  const daysLeft=dayNumber(db.nextPayday)-n;
+  const spentBefore=periodExpenses().filter(x=>x.date<day)
+   .reduce((s,x)=>s+cents(x.amount),0);
+  const spentToday=periodExpenses().filter(x=>x.date===day)
+   .reduce((s,x)=>s+cents(x.amount),0);
+  const savedBefore=periodTransfers().filter(x=>x.date<day)
+   .reduce((s,x)=>s+cents(x.amount),0);
+  const opening=cents(db.life)-cents(db.reservedBills)-spentBefore-savedBefore;
+  const limit=db.limitMode==="manual"?
+   Math.max(0,cents(db.dailyLimit)):
+   Math.max(0,Math.floor(opening/daysLeft));
+  const saving=Math.max(0,Math.min(opening-spentToday,limit-spentToday));
+  const exists=periodTransfers().some(x=>x.date===day);
+  if(saving>0&&!exists){
+   db.bankHistory.push({
+    id:"auto:"+db.periodId+":"+day,
+    date:day,amount:rub(saving),
+    note:"Автонакопление за "+day,
+    type:"AUTO_SAVINGS",periodId:db.periodId
+   });
+   db.bank=rub(cents(db.bank)+saving);
+  }
+  db.lastClosedDay=day;
+ }
+ save();
+}
+function startNewPeriod(data){
+ db.salary=round(data.salary);
+ db.life=round(data.life);
+ db.savings=round(data.savings);
+ db.bank=round(data.bank);
+ db.periodStart=data.date;
+ db.nextPayday=data.nextPayday;
+ db.periodId=uid();
+ db.lastClosedDay=previousDay(data.date);
+ db.reservedBills=0;
+ db.salaryHistory.push({
+  id:uid(),date:data.date,period:data.period,
+  salary:db.salary,life:db.life,
+  savings:db.savings,bank:db.bank,
+  periodId:db.periodId
+ });
 }
 
-function unallocated(){
- return round(db.salary-db.life-db.savings-db.bank);
-}
+/* ГЛАВНАЯ */
 
 function home(){
  const pending=db.tasks.filter(t=>!t.done).length;
  const last=db.reports[0];
-
  return card("🏛️ ORACLE COMMAND",`
  <div class="grid">
  ${tile("Бюджет",money(available()))}
@@ -236,12 +259,11 @@ function home(){
  ${btn("💻 DEV MEMORY","go-dev","alt")}
  </div>
  `)+card("☀️ DAILY BRIEFING",`
- ${row("Дата",esc(dateNow()))}
+ ${row("Дата",dateNow())}
  ${row("Энергия",db.energy+"/10")}
  ${row("Сон",db.sleep+" ч")}
  ${row("Невыполненные задачи",pending)}
- ${row("Торговых сделок сегодня",
- db.trades.filter(x=>x.date===dateNow()).length)}
+ ${row("Торговых сделок сегодня",db.trades.filter(x=>x.date===dateNow()).length)}
  `)+card("💻 Последняя работа",last?`
  <h3>${esc(last.project||"Без названия")}</h3>
  <p>${esc(last.stop||last.done||"Отчёт сохранён")}</p>
@@ -249,21 +271,18 @@ function home(){
  `:"<p class='muted'>Отчётов пока нет.</p>");
 }
 
+/* ПЛАНЫ */
+
 function plans(){
  const shifts=[
- ["off","🏡 Выходной"],
- ["day","☀️ День 08:00–20:00"],
- ["night","🌙 Ночь 20:00–08:00"],
- ["recovery","😴 Отсыпной"]
+  ["off","🏡 Выходной"],
+  ["day","☀️ День 08:00–20:00"],
+  ["night","🌙 Ночь 20:00–08:00"],
+  ["recovery","😴 Отсыпной"]
  ];
-
  return card("📅 План дня",`
  <label>Тип дня</label>
- <select id="shift">
- ${shifts.map(([id,name])=>
- `<option value="${id}" ${db.shift===id?"selected":""}>${name}</option>`
- ).join("")}
- </select>
+ <select id="shift">${shifts.map(([id,name])=>`<option value="${id}" ${db.shift===id?"selected":""}>${name}</option>`).join("")}</select>
  <label>Энергия, от 1 до 10</label>
  <input id="energy" type="number" min="1" max="10" value="${db.energy}">
  <label>Сон, часов</label>
@@ -271,8 +290,7 @@ function plans(){
  <div class="buttons">${btn("Сохранить","save-day")}</div>
  `)+card("＋ Добавить задачу",`
  <form data-form="task">
- <label>Название</label>
- <input name="name" required>
+ <label>Название</label><input name="name" required>
  <label>Продолжительность, минут</label>
  <input name="duration" type="number" min="1" value="60" required>
  <button class="btn" style="margin-top:12px">Добавить</button>
@@ -280,86 +298,64 @@ function plans(){
  `)+card("📋 Задачи",`
  ${db.tasks.length?db.tasks.map(t=>`
  <div class="row">
- <input class="check" type="checkbox"
- data-task="${t.id}" ${t.done?"checked":""}>
+ <input class="check" type="checkbox" data-task="${t.id}" ${t.done?"checked":""}>
  <span style="flex:1;${t.done?"text-decoration:line-through":""}">
- ${esc(t.name)}
- <small>${t.duration} мин${t.deferred?" · Перенесено":""}</small>
+ ${esc(t.name)}<small>${t.duration} мин${t.deferred?" · Перенесено":""}</small>
  </span>
  ${btn("✕","delete-task-"+t.id,"danger")}
  </div>`).join(""):"<p class='muted'>Задач пока нет.</p>"}
- <div class="buttons">
- ${btn("🚨 Сегодня не по плану","replan","alt")}
- </div>
- `);
+ <div class="buttons">${btn("🚨 Сегодня не по плану","replan","alt")}</div>`);
 }
 
+/* ФИНАНСОВЫЙ КАЛЕНДАРЬ */
+
 function calendar(){
- const now=new Date();
- const y=now.getFullYear(),m=now.getMonth();
+ const now=new Date(),y=now.getFullYear(),m=now.getMonth();
  const days=new Date(y,m+1,0).getDate();
  const offset=(new Date(y,m,1).getDay()+6)%7;
-
  let cells=["Пн","Вт","Ср","Чт","Пт","Сб","Вс"]
- .map(x=>`<div class="muted" style="text-align:center">${x}</div>`);
-
+  .map(x=>`<div class="muted" style="text-align:center">${x}</div>`);
  for(let i=0;i<offset;i++)cells.push("<div></div>");
-
  for(let day=1;day<=days;day++){
-  const d=y+"-"+String(m+1).padStart(2,"0")+"-"+
-  String(day).padStart(2,"0");
+  const d=y+"-"+String(m+1).padStart(2,"0")+"-"+String(day).padStart(2,"0");
   const spent=db.expenses.filter(x=>x.date===d)
-  .reduce((s,x)=>s+Number(x.amount),0);
-
-  cells.push(`<div class="day">${day}
-  <small>${spent?Math.round(spent)+" ₽":"·"}</small></div>`);
+   .reduce((s,x)=>s+Number(x.amount),0);
+  cells.push(`<div class="day">${day}<small>${spent?Math.round(spent)+" ₽":"·"}</small></div>`);
  }
-
  return `<div class="calendar">${cells.join("")}</div>`;
 }
 
-function finance(){
- const tabs=[
- ["budget","💰 Бюджет"],
- ["salary","💵 Зарплата"],
- ["bank","🏦 Банк"],
- ["history","📜 История"]
- ];
+/* ФИНАНСЫ */
 
- const nav=`<div class="tabs">${tabs.map(([id,name])=>
- `<button data-finance="${id}"
- class="${db.financeTab===id?"active":""}">${name}</button>`
- ).join("")}</div>`;
+function finance(){
+ const nav=tabs([
+  ["budget","💰 Бюджет"],
+  ["salary","💵 Зарплата"],
+  ["bank","🏦 Банк"],
+  ["history","📜 История"]
+ ],db.financeTab,"finance");
 
  if(db.financeTab==="salary"){
   return nav+card("💵 Полученная зарплата",`
-  <p class="muted">Укажи фактически полученную сумму.
-  Распредели её между жизнью, накоплениями и свободным банком.</p>
+  <p class="muted">Укажи фактически полученную сумму и дату следующей зарплаты.</p>
   <form data-form="salary">
   <label>Дата получения</label>
   <input type="date" name="date" value="${dateNow()}" required>
+  <label>Следующая зарплата</label>
+  <input type="date" name="nextPayday" value="${esc(db.nextPayday)}" required>
   <label>Зарплатный период</label>
-  <select name="period">
-   <option>10–25</option>
-   <option>25–10</option>
-   <option>Другой</option>
-  </select>
+  <select name="period"><option>10–25</option><option>25–10</option><option>Другой</option></select>
   <label>Пришло зарплаты, ₽</label>
-  <input name="salary" type="number" min="0" step="0.01"
-  value="${db.salary}" required>
+  <input name="salary" type="number" min="0" step="0.01" value="${db.salary}" required>
   <label>Выделяю на жизнь, ₽</label>
-  <input name="life" type="number" min="0" step="0.01"
-  value="${db.life}" required>
+  <input name="life" type="number" min="0" step="0.01" value="${db.life}" required>
   <label>В накопления, ₽</label>
-  <input name="savings" type="number" min="0" step="0.01"
-  value="${db.savings}" required>
+  <input name="savings" type="number" min="0" step="0.01" value="${db.savings}" required>
   <label>В свободный банк, ₽</label>
-  <input name="bank" type="number" min="0" step="0.01"
-  value="${db.bank}" required>
+  <input name="bank" type="number" min="0" step="0.01" value="${db.bank}" required>
   <button class="btn" style="margin-top:12px">Сохранить распределение</button>
   </form>
-  <p class="muted">Это редактирование текущего распределения.
-  Оно не создаёт дополнительный доход.</p>
+  <p class="muted">Сохранение начинает новый финансовый период. Старые расходы и операции остаются в истории.</p>
   `)+card("📊 Распределение",`
   <div class="grid">
   ${tile("Зарплата",money(db.salary))}
@@ -369,9 +365,7 @@ function finance(){
   </div>
   ${row("Не распределено",money(unallocated()))}
   `)+card("📜 История сохранений",
-  db.salaryHistory.slice().reverse().map(x=>
-  row(x.date+" · "+x.period,money(x.salary))
-  ).join("")||"История пока пуста");
+  db.salaryHistory.slice().reverse().map(x=>row(x.date+" · "+x.period,money(x.salary))).join("")||"История пока пуста");
  }
 
  if(db.financeTab==="bank"){
@@ -385,75 +379,79 @@ function finance(){
   <button class="btn alt" name="operation" value="take">Снять</button>
   </div>
   </form>
-  <p class="muted">Пополнение и снятие здесь не создают доход или расход.
-  Это отдельные изменения свободного банка.</p>
-  `)+card("История операций",
+  <p class="muted">Это виртуальный Банк внутри приложения. Реальные деньги не переводятся.</p>
+  `)+card("📜 История операций",
   db.bankHistory.slice().reverse().map(x=>
-  row(x.date+" · "+x.note,money(x.amount))
+   row(x.date+" · "+x.note,
+   `<span class="${Number(x.amount)>=0?"green":"red"}">${Number(x.amount)>0?"+":""}${money(x.amount)}</span>`)
   ).join("")||"Операций пока нет");
  }
 
  if(db.financeTab==="history"){
   return nav+card("📜 История расходов",
-  db.expenses.slice().reverse().map(x=>
-  `<div class="row">
-   <span>${esc(x.date)} · ${esc(x.name)}</span>
-   <b>−${money(x.amount)}</b>
-   ${btn("✕","delete-expense-"+x.id,"danger")}
-  </div>`
-  ).join("")||"Расходов пока нет");
+  db.expenses.slice().reverse().map(x=>`
+  <div class="row">
+  <span>${esc(x.date)} · ${esc(x.name)}</span>
+  <b>−${money(x.amount)}</b>
+  ${btn("✕","delete-expense-"+x.id,"danger")}
+  </div>`).join("")||"Расходов пока нет");
  }
 
- const spent=sumExpenses();
- const spentToday=db.expenses.filter(x=>x.date===dateNow())
- .reduce((s,x)=>s+Number(x.amount),0);
-
+ const plan=financePlan();
  return nav+card("💰 Мой бюджет",`
  <div class="grid">
  ${tile("Получено зарплаты",money(db.salary))}
  ${tile("Выделено на жизнь",money(db.life))}
- ${tile("Потрачено",money(spent))}
+ ${tile("Потрачено",money(sumExpenses()))}
  ${tile("Осталось",money(available()))}
  </div>
- <div class="buttons">
- ${btn("💵 Ввести зарплату","open-salary")}
- </div>
- <label>Дневной лимит, ₽</label>
- <input id="dailyLimit" type="number" min="0" step="0.01"
- value="${db.dailyLimit}">
- <div class="buttons">${btn("Сохранить лимит","save-limit")}</div>
+ <div class="buttons">${btn("💵 Ввести зарплату","open-salary")}</div>
+ `)+card("🧠 Умный дневной бюджет",`
+ <label>Режим дневного лимита</label>
+ <select id="limitMode">
+ <option value="auto" ${db.limitMode!=="manual"?"selected":""}>Автоматический</option>
+ <option value="manual" ${db.limitMode==="manual"?"selected":""}>Ручной</option>
+ </select>
+ <label>Ручной лимит, ₽</label>
+ <input id="dailyLimit" type="number" min="0" step="0.01" value="${db.dailyLimit}">
+ <label>Обязательные платежи в резерве, ₽</label>
+ <input id="reservedBills" type="number" min="0" step="0.01" value="${db.reservedBills}">
+ <div class="buttons">${btn("Сохранить настройки","save-limit")}</div>
+ ${!plan.valid?`<div class="notice">⚠️ Укажи будущую дату зарплаты во вкладке «Зарплата».</div>`:""}
  <div class="grid" style="margin-top:12px">
- ${tile("Лимит сегодня",money(db.dailyLimit))}
- ${tile("Сегодня потрачено",money(spentToday))}
+ ${tile("Дней до зарплаты",plan.valid?plan.days:"—")}
+ ${tile("Лимит сегодня",money(rub(plan.limit)))}
+ ${tile("Сегодня потрачено",money(rub(plan.todaySpent)))}
+ ${tile("Можно потратить сегодня",money(rub(plan.left)))}
+ ${tile("Переведено в Банк",money(rub(transferredCents())))}
+ ${tile("Перерасход сегодня",money(rub(plan.over)))}
  </div>
+ <p class="muted">Неизрасходованная часть дневного лимита переводится во внутренний Банк после завершения дня. Если приложение было закрыто, пропущенные дни обрабатываются при открытии.</p>
  `)+card("📅 Финансовый календарь",calendar())+
  card("＋ Записать расход",`
  <form data-form="expense">
- <label>Название</label>
- <input name="name" required>
+ <label>Название</label><input name="name" required>
  <label>Сумма, ₽</label>
  <input name="amount" type="number" min="0.01" step="0.01" required>
  <button class="btn" style="margin-top:12px">Сохранить расход</button>
  </form>
  `)+card("Последние расходы",
- db.expenses.slice(-5).reverse().map(x=>
- row(x.name,"−"+money(x.amount))
- ).join("")||"<p class='muted'>Расходов нет. Ничего не добавлено автоматически.</p>");
+ db.expenses.slice(-5).reverse().map(x=>row(x.name,"−"+money(x.amount))).join("")||
+ "<p class='muted'>Расходов пока нет.</p>");
 }
+
+/* ТРЕЙДИНГ */
 
 function trade(){
  const todayTrades=db.trades.filter(x=>x.date===dateNow());
  const wins=todayTrades.filter(x=>x.result==="win").length;
  const losses=todayTrades.filter(x=>x.result==="loss").length;
  let streak=0;
-
  for(let i=todayTrades.length-1;i>=0;i--){
   if(todayTrades[i].result==="loss")streak++;
   else break;
  }
-
  const stopped=todayTrades.length>=5||streak>=2;
-
  return card("📈 ORACLE TRADE",`
  <div class="grid">
  ${tile("Текущий капитал",money(db.capital+pnl()))}
@@ -469,19 +467,11 @@ function trade(){
  `)+card("＋ Записать сделку",`
  <form data-form="trade">
  <label>Актив</label>
- <select name="asset">
- <option>EUR/USD</option><option>GBP/USD</option>
- <option>USD/JPY</option><option>BTC/USDT</option>
- </select>
+ <select name="asset"><option>EUR/USD</option><option>GBP/USD</option><option>USD/JPY</option><option>BTC/USDT</option></select>
  <label>Таймфрейм</label>
- <select name="tf">
- <option>M1</option><option>M5</option>
- <option>M15</option><option>H1</option>
- </select>
+ <select name="tf"><option>M1</option><option>M5</option><option>M15</option><option>H1</option></select>
  <label>Направление</label>
- <select name="direction">
- <option>CALL</option><option>PUT</option>
- </select>
+ <select name="direction"><option>CALL</option><option>PUT</option></select>
  <label>Ставка, ₽</label>
  <input name="stake" type="number" min="0.01" step="0.01" required>
  <label>Выплата, %</label>
@@ -498,6 +488,8 @@ function trade(){
  ).join("")||"Сделок пока нет");
 }
 
+/* DEV MEMORY */
+
 const HEADINGS={
  "ПРОЕКТ":"project","ПОМОЩНИК":"agent","ДАТА":"date",
  "СДЕЛАНО":"done","ГДЕ ОСТАНОВИЛИСЬ":"stop",
@@ -507,15 +499,12 @@ const HEADINGS={
  "ИТОГИ ТОРГОВОГО ДНЯ":"summary",
  "ИТОГ":"conclusion"
 };
-
 function parseReport(raw){
  const r={};
  let current="";
-
  for(const line of raw.split(/\r?\n/)){
   const m=line.match(/^([^:]{2,60}):\s*(.*)$/);
   const heading=m?.[1]?.trim().toUpperCase();
-
   if(heading&&HEADINGS[heading]){
    current=HEADINGS[heading];
    r[current]=m[2]||"";
@@ -523,10 +512,8 @@ function parseReport(raw){
    r[current]+="\n"+line;
   }
  }
-
  return r;
 }
-
 function reportText(r){
  return [
   "ORACLE LIFE · ПЕРЕДАЧА СЕССИИ",
@@ -542,16 +529,11 @@ function reportText(r){
   "ПОЛНЫЙ ОТЧЁТ:\n"+(r.source||"")
  ].join("\n\n");
 }
-
 function dev(){
- const tabs=[
- ["import","📥 Импорт"],["fields","📝 Разбор"],
- ["latest","📌 Последняя"],["archive","🗂️ Архив"]
- ];
-
- const nav=`<div class="tabs">${tabs.map(([id,name])=>
- `<button data-dev="${id}" class="${db.devTab===id?"active":""}">
- ${name}</button>`).join("")}</div>`;
+ const nav=tabs([
+  ["import","📥 Импорт"],["fields","📝 Разбор"],
+  ["latest","📌 Последняя"],["archive","🗂️ Архив"]
+ ],db.devTab,"dev");
 
  if(db.devTab==="import"){
   return nav+card("💻 DEV MEMORY",`
@@ -560,10 +542,8 @@ function dev(){
   <div class="buttons">
   ${btn("🔍 Разобрать","parse")}
   ${btn("🧹 Очистить всё","clear-raw","alt")}
-  </div>
-  `);
+  </div>`);
  }
-
  if(db.devTab==="fields"){
   const r=db.draft||{};
   const fields=[
@@ -574,7 +554,6 @@ function dev(){
    ["git","Git"],["trades","История сделок"],
    ["summary","Итоги торгового дня"]
   ];
-
   return nav+card("📝 Проверка разбора",`
   <form data-form="report">
   ${fields.map(([id,name])=>`
@@ -583,10 +562,8 @@ function dev(){
   `).join("")}
   <button class="btn" style="margin-top:12px">💾 Сохранить отчёт</button>
   </form>
-  <div class="buttons">${btn("Сбросить разбор","clear-draft","alt")}</div>
-  `);
+  <div class="buttons">${btn("Сбросить разбор","clear-draft","alt")}</div>`);
  }
-
  if(db.devTab==="latest"){
   const r=db.reports[0];
   return nav+card("📌 Последняя работа",r?`
@@ -594,8 +571,7 @@ function dev(){
   <p class="muted">${esc(r.date||"Дата не указана")}</p>
   ${["done","stop","issues","next"].map(k=>`
   <div class="tile" style="margin-bottom:8px">
-  <b>${({done:"Сделано",stop:"Остановились",
-  issues:"Проблемы",next:"Дальше"})[k]}</b>
+  <b>${({done:"Сделано",stop:"Остановились",issues:"Проблемы",next:"Дальше"})[k]}</b>
   <pre>${esc(r[k]||"Не указано")}</pre>
   </div>`).join("")}
   <div class="buttons">
@@ -606,7 +582,6 @@ function dev(){
   <pre>${esc(r.source||"Не указан")}</pre></details>
   `:"<p>Нет сохранённых отчётов.</p>");
  }
-
  return nav+card("🗂️ Архив",db.reports.length?
  db.reports.map((r,i)=>`
  <div class="tile" style="margin-bottom:10px">
@@ -618,15 +593,13 @@ function dev(){
  </div></div>`).join(""):"Архив пуст");
 }
 
-function more(){
- const tabs=[
- ["dev","💻 DEV"],["ideas","💡 Идеи"],
- ["notes","📔 Дневник"],["settings","⚙️ Настройки"]
- ];
+/* ДОПОЛНИТЕЛЬНЫЕ РАЗДЕЛЫ */
 
- const nav=`<div class="tabs">${tabs.map(([id,name])=>
- `<button data-more="${id}" class="${db.more===id?"active":""}">
- ${name}</button>`).join("")}</div>`;
+function more(){
+ const nav=tabs([
+  ["dev","💻 DEV"],["ideas","💡 Идеи"],
+  ["notes","📔 Дневник"],["settings","⚙️ Настройки"]
+ ],db.more,"more");
 
  if(db.more==="dev")return nav+dev();
 
@@ -636,40 +609,31 @@ function more(){
   <textarea name="text" placeholder="Новая идея..." required></textarea>
   <button class="btn">Сохранить</button>
   </form>
-  `)+card("Мои идеи",
-  db.ideas.map(x=>row(x,"")).join("")||"Идей пока нет");
+  `)+card("Мои идеи",db.ideas.map(x=>row(x,"")).join("")||"Идей пока нет");
  }
-
  if(db.more==="notes"){
   return nav+card("📔 Дневник",`
   <form data-form="note">
   <textarea name="text" placeholder="Запись дня..." required></textarea>
   <button class="btn">Сохранить</button>
   </form>
-  `)+card("Записи",
-  db.notes.slice().reverse().map(x=>
-  row(x.date,esc(x.text))
-  ).join("")||"Записей пока нет");
+  `)+card("Записи",db.notes.slice().reverse().map(x=>row(x.date,esc(x.text))).join("")||"Записей пока нет");
  }
-
  return nav+card("⚙️ Резервные копии",`
  <p>Данные хранятся локально в Telegram WebView или браузере.</p>
  <div class="buttons">
  ${btn("📤 Экспорт JSON","export")}
  ${btn("📥 Импорт JSON","import","alt")}
  </div>
- <p class="muted">Сохраняй резервную копию перед очисткой Telegram
- или переустановкой приложения.</p>
- <div class="buttons">
- ${btn("🗑️ Сбросить данные","reset","danger")}
- </div>
- `);
+ <p class="muted">Сохраняй резервную копию перед очисткой Telegram или переустановкой приложения.</p>
+ <div class="buttons">${btn("🗑️ Сбросить данные","reset","danger")}</div>`);
 }
+
+/* ОТОБРАЖЕНИЕ */
 
 function render(){
  const pages={home,plans,finance,trade,more};
  if(!pages[db.tab])db.tab="home";
-
  $("nav").innerHTML=[
   ["home","🏛️","Главная"],
   ["plans","📅","Планы"],
@@ -679,26 +643,14 @@ function render(){
  ].map(([id,icon,name])=>`
  <button data-tab="${id}" class="${db.tab===id?"active":""}">
  <b>${icon}</b>${name}</button>`).join("");
-
  try{
   $("main").innerHTML=pages[db.tab]();
  }catch(e){
   console.error(e);
   $("main").textContent="Ошибка отображения: "+e.message;
  }
-
  save();
 }
-
-function copy(text){
- if(navigator.clipboard&&window.isSecureContext){
-  navigator.clipboard.writeText(text).then(
-   ()=>alert("Скопировано"),
-   ()=>fallbackCopy(text)
-  );
- }else fallbackCopy(text);
-}
-
 function fallbackCopy(text){
  const a=document.createElement("textarea");
  a.value=text;
@@ -709,25 +661,25 @@ function fallbackCopy(text){
  if(ok)alert("Скопировано");
  else prompt("Скопируй текст:",text);
 }
+function copy(text){
+ if(navigator.clipboard&&window.isSecureContext){
+  navigator.clipboard.writeText(text).then(
+   ()=>alert("Скопировано"),
+   ()=>fallbackCopy(text)
+  );
+ }else fallbackCopy(text);
+}
+
+/* КНОПКИ */
 
 document.addEventListener("click",e=>{
- const b=e.target.closest(
-  "[data-tab],[data-more],[data-finance],[data-dev],[data-action]"
- );
+ const b=e.target.closest("[data-tab],[data-more],[data-finance],[data-dev],[data-action]");
  if(!b)return;
 
- if(b.dataset.tab){
-  db.tab=b.dataset.tab;render();return;
- }
- if(b.dataset.more){
-  db.more=b.dataset.more;render();return;
- }
- if(b.dataset.finance){
-  db.financeTab=b.dataset.finance;render();return;
- }
- if(b.dataset.dev){
-  db.devTab=b.dataset.dev;render();return;
- }
+ if(b.dataset.tab){db.tab=b.dataset.tab;render();return}
+ if(b.dataset.more){db.more=b.dataset.more;render();return}
+ if(b.dataset.finance){db.financeTab=b.dataset.finance;render();return}
+ if(b.dataset.dev){db.devTab=b.dataset.dev;render();return}
 
  const a=b.dataset.action;
  if(!a)return;
@@ -738,70 +690,66 @@ document.addEventListener("click",e=>{
   if(dest==="dev")db.more="dev";
   render();return;
  }
-
- if(a==="open-salary"){
-  db.financeTab="salary";render();return;
- }
-
+ if(a==="open-salary"){db.financeTab="salary";render();return}
  if(a==="save-day"){
-  db.energy=Number($("energy").value);
-  db.sleep=Number($("sleep").value);
+  db.energy=Math.max(1,Math.min(10,Number($("energy").value)||7));
+  db.sleep=Math.max(0,Math.min(24,Number($("sleep").value)||0));
  }
-
  if(a==="save-limit"){
-  db.dailyLimit=Number($("dailyLimit").value);
+  const limit=Number($("dailyLimit").value);
+  const reserve=Number($("reservedBills").value);
+  if(!Number.isFinite(limit)||limit<0||!Number.isFinite(reserve)||reserve<0){
+   alert("Проверь суммы.");return;
+  }
+  if(cents(reserve)>cents(db.life)){
+   alert("Резерв превышает бюджет на жизнь.");return;
+  }
+  db.dailyLimit=round(limit);
+  db.reservedBills=round(reserve);
+  db.limitMode=$("limitMode").value;
  }
-
  if(a==="save-capital"){
-  db.capital=Number($("capital").value);
+  const value=Number($("capital").value);
+  if(!Number.isFinite(value)||value<0){alert("Проверь капитал.");return}
+  db.capital=round(value);
  }
-
  if(a==="replan"){
   if(confirm("Пометить невыполненные задачи для переноса?")){
    db.tasks.forEach(t=>{if(!t.done)t.deferred=true});
   }
  }
-
  if(a.startsWith("delete-task-")){
   const id=a.slice("delete-task-".length);
   if(confirm("Удалить задачу?"))
    db.tasks=db.tasks.filter(t=>String(t.id)!==id);
  }
-
  if(a.startsWith("delete-expense-")){
   const id=a.slice("delete-expense-".length);
+  const expense=db.expenses.find(x=>String(x.id)===id);
+  if(expense&&expense.date>=db.periodStart&&
+   validDate(db.lastClosedDay)&&expense.date<=db.lastClosedDay){
+   alert("Этот финансовый день закрыт. Удаление заблокировано, чтобы не нарушить накопления.");
+   return;
+  }
   if(confirm("Удалить этот расход?"))
    db.expenses=db.expenses.filter(x=>String(x.id)!==id);
  }
-
  if(a==="clear-raw"){
-  if(confirm("Очистить текст отчёта?")){
-   db.raw="";db.draft=null;
-  }
+  if(confirm("Очистить текст отчёта?")){db.raw="";db.draft=null}
  }
-
  if(a==="parse"){
   db.raw=$("rawReport").value;
-  if(!db.raw.trim()){
-   alert("Сначала вставь отчёт.");return;
-  }
+  if(!db.raw.trim()){alert("Сначала вставь отчёт.");return}
   db.draft=parseReport(db.raw);
   db.devTab="fields";
  }
-
- if(a==="clear-draft"){
-  db.draft=null;db.devTab="import";
- }
-
+ if(a==="clear-draft"){db.draft=null;db.devTab="import"}
  if(a==="copy-last"){
   if(db.reports[0])copy(reportText(db.reports[0]));
  }
-
  if(a==="delete-last"){
-  if(confirm("Удалить последнюю сессию?"))
-   db.reports.shift();
+  if(confirm("Удалить последнюю сессию?"))db.reports.shift();
  }
-
  if(a.startsWith("open-report-")){
   const i=Number(a.slice("open-report-".length));
   const r=db.reports[i];
@@ -811,17 +759,12 @@ document.addEventListener("click",e=>{
    db.devTab="latest";
   }
  }
-
  if(a.startsWith("delete-report-")){
   const i=Number(a.slice("delete-report-".length));
-  if(confirm("Удалить отчёт?"))
-   db.reports.splice(i,1);
+  if(confirm("Удалить отчёт?"))db.reports.splice(i,1);
  }
-
  if(a==="export"){
-  const data=JSON.stringify({
-   app:"ORACLE LIFE",version:71,data:db
-  },null,2);
+  const data=JSON.stringify({app:"ORACLE LIFE",version:72,data:db},null,2);
   const blob=new Blob([data],{type:"application/json"});
   const url=URL.createObjectURL(blob);
   const link=document.createElement("a");
@@ -832,194 +775,148 @@ document.addEventListener("click",e=>{
   link.remove();
   setTimeout(()=>URL.revokeObjectURL(url),3000);
  }
-
  if(a==="import")$("backupFile").click();
-
  if(a==="reset"){
-  if(confirm("Удалить ВСЕ данные ORACLE LIFE 7.1?")){
-   if(confirm("Точно удалить? Это действие необратимо.")){
-    db=defaults();
-   }
+  if(confirm("Удалить ВСЕ данные ORACLE LIFE 7.2?")&&
+   confirm("Точно удалить? Это действие необратимо.")){
+   db=defaults();
+   migrateFinance();
   }
  }
-
  render();
 });
 
 document.addEventListener("change",e=>{
- if(e.target.id==="shift"){
-  db.shift=e.target.value;save();
- }
+ if(e.target.id==="shift"){db.shift=e.target.value;save()}
  if(e.target.dataset.task){
   const t=db.tasks.find(x=>String(x.id)===e.target.dataset.task);
   if(t)t.done=e.target.checked;
   save();
  }
 });
-
 document.addEventListener("input",e=>{
- if(e.target.id==="rawReport"){
-  db.raw=e.target.value;save();
- }
+ if(e.target.id==="rawReport"){db.raw=e.target.value;save()}
 });
+
+/* ФОРМЫ */
 
 document.addEventListener("submit",e=>{
  const form=e.target.closest("form[data-form]");
  if(!form)return;
  e.preventDefault();
-
  const data=Object.fromEntries(new FormData(form));
  const type=form.dataset.form;
 
  if(type==="task"){
   db.tasks.push({
-   id:Date.now(),name:data.name.trim(),
-   duration:Number(data.duration),
-   done:false,deferred:false
+   id:uid(),name:data.name.trim(),
+   duration:Number(data.duration),done:false,deferred:false
   });
  }
-
  if(type==="salary"){
-  const salary=round(data.salary);
-  const life=round(data.life);
-  const savings=round(data.savings);
-  const bank=round(data.bank);
-
-  if([salary,life,savings,bank].some(x=>!Number.isFinite(x)||x<0)){
-   alert("Суммы должны быть положительными.");return;
+  const salary=cents(data.salary),life=cents(data.life);
+  const savings=cents(data.savings),bank=cents(data.bank);
+  if([salary,life,savings,bank].some(x=>!Number.isSafeInteger(x)||x<0)){
+   alert("Проверь суммы.");return;
   }
-
-  if(life+savings+bank>salary+0.001){
+  if(life+savings+bank>salary){
    alert("Распределение превышает зарплату.");return;
   }
-
-  db.salary=salary;
-  db.life=life;
-  db.savings=savings;
-  db.bank=bank;
-
-  db.salaryHistory.push({
-   id:Date.now(),date:data.date,period:data.period,
-   salary,life,savings,bank
-  });
+  if(!validDate(data.date)||!validDate(data.nextPayday)||
+   data.nextPayday<=data.date||data.nextPayday<=dateNow()){
+   alert("Укажи правильную дату следующей зарплаты.");return;
+  }
+  if(data.date>dateNow()){
+   alert("Дата получения зарплаты не может быть в будущем.");return;
+  }
+  if(db.periodStart&&db.periodStart!==data.date&&
+   !confirm("Начать новый финансовый период? Старые записи сохранятся."))return;
+  startNewPeriod(data);
  }
-
  if(type==="expense"){
-  const amount=round(data.amount);
-  if(!Number.isFinite(amount)||amount<=0)return;
+  const amount=cents(data.amount);
+  if(!Number.isSafeInteger(amount)||amount<=0){alert("Проверь сумму.");return}
   db.expenses.push({
-   id:Date.now(),name:data.name.trim(),
-   amount,date:dateNow()
+   id:uid(),name:data.name.trim(),
+   amount:rub(amount),date:dateNow()
   });
  }
-
  if(type==="bank"){
-  const amount=round(data.amount);
+  const amount=cents(data.amount);
   const take=e.submitter?.value==="take";
-
-  if(!Number.isFinite(amount)||amount<=0)return;
-
-  if(take&&amount>db.bank){
+  if(!Number.isSafeInteger(amount)||amount<=0){alert("Проверь сумму.");return}
+  if(take&&amount>cents(db.bank)){
    alert("Недостаточно денег.");return;
   }
-
-  db.bank=round(db.bank+(take?-amount:amount));
+  db.bank=rub(cents(db.bank)+(take?-amount:amount));
   db.bankHistory.push({
-   id:Date.now(),date:dateNow(),
-   amount:take?-amount:amount,
-   note:take?"Снятие":"Пополнение"
+   id:uid(),date:dateNow(),
+   amount:rub(take?-amount:amount),
+   note:take?"Снятие":"Пополнение",
+   type:take?"MANUAL_WITHDRAW":"MANUAL_DEPOSIT"
   });
  }
-
  if(type==="trade"){
-  const stake=round(data.stake);
-  const payout=Number(data.payout);
+  const stake=round(data.stake),payout=Number(data.payout);
   const result=e.submitter?.value==="loss"?"loss":"win";
-
   if(!Number.isFinite(stake)||stake<=0||
-     !Number.isFinite(payout)||payout<0||payout>100){
+   !Number.isFinite(payout)||payout<0||payout>100){
    alert("Проверь параметры сделки.");return;
   }
-
   const todayTrades=db.trades.filter(x=>x.date===dateNow());
   let streak=0;
-
   for(let i=todayTrades.length-1;i>=0;i--){
    if(todayTrades[i].result==="loss")streak++;
    else break;
   }
-
   const current=db.capital+pnl();
-
   if(stake>current*0.01){
-   if(!confirm("Ставка превышает риск 1%. Записать нарушение?"))
-    return;
+   if(!confirm("Ставка превышает риск 1%. Записать нарушение?"))return;
   }
-
   if(todayTrades.length>=5||streak>=2){
-   if(!confirm("Нарушение торгового лимита. Записать сделку?"))
-    return;
+   if(!confirm("Нарушение торгового лимита. Записать сделку?"))return;
   }
-
-  const resultPnl=result==="win"?
-   round(stake*payout/100):-stake;
-
+  const resultPnl=result==="win"?round(stake*payout/100):-stake;
   db.trades.push({
-   id:Date.now(),date:dateNow(),
-   asset:data.asset,tf:data.tf,
-   direction:data.direction,stake,payout,
-   result,pnl:resultPnl
+   id:uid(),date:dateNow(),asset:data.asset,tf:data.tf,
+   direction:data.direction,stake,payout,result,pnl:resultPnl
   });
  }
-
  if(type==="report"){
   db.reports.unshift({
-   ...data,id:Date.now(),
-   date:data.date||dateNow(),
-   source:db.raw
+   ...data,id:uid(),date:data.date||dateNow(),source:db.raw
   });
   db.devTab="latest";
  }
-
- if(type==="idea"){
-  db.ideas.push(data.text.trim());
- }
-
- if(type==="note"){
-  db.notes.push({date:dateNow(),text:data.text.trim()});
- }
-
+ if(type==="idea")db.ideas.push(data.text.trim());
+ if(type==="note")db.notes.push({date:dateNow(),text:data.text.trim()});
  render();
 });
+
+/* ИМПОРТ РЕЗЕРВНОЙ КОПИИ */
 
 $("backupFile").addEventListener("change",async e=>{
  const file=e.target.files?.[0];
  if(!file)return;
-
  try{
   const obj=JSON.parse(await file.text());
-
   if(obj.app!=="ORACLE LIFE"||!obj.data||
-     typeof obj.data!=="object"||Array.isArray(obj.data)){
+   typeof obj.data!=="object"||Array.isArray(obj.data)){
    throw new Error("Неверный формат файла");
   }
-
+  const restored={...defaults(),...obj.data};
+  for(const name of arrays){
+   if(!Array.isArray(restored[name]))throw new Error("Повреждён раздел "+name);
+  }
   if(confirm("Заменить текущие данные резервной копией?")){
-   const restored={...defaults(),...obj.data};
-
-   for(const name of arrays){
-    if(!Array.isArray(restored[name])){
-     throw new Error("Повреждён раздел "+name);
-    }
-   }
-
    db=restored;
+   migrateFinance();
+   closeFinanceDays();
    render();
   }
  }catch(error){
   alert("Ошибка импорта: "+error.message);
  }
-
  e.target.value="";
 });
 
@@ -1027,6 +924,15 @@ window.addEventListener("error",e=>{
  console.error("ORACLE LIFE:",e.error||e.message);
 });
 
+document.addEventListener("visibilitychange",()=>{
+ if(!document.hidden){
+  closeFinanceDays();
+  render();
+ }
+});
+
+migrateFinance();
+closeFinanceDays();
 render();
 </script>
 </body>
